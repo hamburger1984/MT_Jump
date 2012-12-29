@@ -1,0 +1,44 @@
+\input{einstellungen/grundeinstellungen} % Die stilistischen Parameter
+
+\date{\today}
+%---------------------------------------------------------------------------------------------------
+% Anfang des Schriftstücks
+%---------------------------------------------------------------------------------------------------
+\begin{document}
+
+%---------------------------------------------------------------------------------------------------
+% Erstellen des Deck- und des Titelblatts
+%---------------------------------------------------------------------------------------------------
+\createCover{Modellierung eines Sprungs aus großer Höhe} % Art der Arbeit
+{Andreas Krohn} % Author
+{Hausarbeit im Rahmen der Vorlesung Modellierung technischer Systeme\\
+WS2012/13 - 09.01.2012} % Title
+
+%---------------------------------------------------------------------------------------------------
+% Zusammenfassung}
+%---------------------------------------------------------------------------------------------------
+% \input{standard/mabstrakt.tex}
+
+%---------------------------------------------------------------------------------------------------
+% Verzeichnisse
+%---------------------------------------------------------------------------------------------------
+\tableofcontents % Inhaltsverzeichnis
+% \listoftables % Tabellenverzeichnis
+% \listoffigures % Abbildungsverzeichnis
+
+\input{kapitel/einfuehrung.tex}
+\input{kapitel/problemstellung.tex}
+\input{kapitel/modellierung.tex}
+\input{kapitel/auswertung.tex}
+\input{kapitel/schluss.tex}
+
+%---------------------------------------------------------------------------------------------------
+% Literaturverzeichnis
+%---------------------------------------------------------------------------------------------------
+%\bibliographystyle{IEEEtran} % dinat.bst fehlt, kein format für @ONLINE, gefällt mir so irgendwie besser..
+%\bibliography{literatur/literatur2} % Literaturverzeichnis
+
+%---------------------------------------------------------------------------------------------------
+% Ende des Schriftstücks
+%---------------------------------------------------------------------------------------------------
+\end{document}
