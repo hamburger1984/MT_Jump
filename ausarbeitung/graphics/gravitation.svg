@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1488.189"
+   height="1052.3622"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="gravitation.svg"
+   inkscape:export-filename="/home/andreas/haw/mt/Baumgartner/ausarbeitung/graphics/gravitation.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="DistanceEnd"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DistanceEnd">
+      <g
+         id="g2301">
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:1.14999998;stroke-linecap:square"
+           d="M 0,0 -2,0"
+           id="path2316"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 -13,4 -9,0 -13,-4 0,0 z"
+           id="path2312"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 0,40"
+           id="path2314"
+           inkscape:connector-curvature="0" />
+      </g>
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DistanceStart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DistanceStart">
+      <g
+         id="g2300">
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:1.14999998;stroke-linecap:square"
+           d="M 0,0 2,0"
+           id="path2306"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 13,4 9,0 13,-4 0,0 z"
+           id="path2302"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 0,40"
+           id="path2304"
+           inkscape:connector-curvature="0" />
+      </g>
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path3844"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path3841"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3786">
+      <stop
+         style="stop-color:#9a7347;stop-opacity:1;"
+         offset="0"
+         id="stop3788" />
+      <stop
+         style="stop-color:#9a7347;stop-opacity:0;"
+         offset="1"
+         id="stop3790" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3786"
+       id="linearGradient3794"
+       x1="200.55081"
+       y1="657.39252"
+       x2="447.96713"
+       y2="404.8544"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3786-5"
+       id="linearGradient3794-9"
+       x1="200.55081"
+       y1="657.39252"
+       x2="447.96713"
+       y2="404.8544"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3786-5">
+      <stop
+         style="stop-color:#9a7347;stop-opacity:1;"
+         offset="0"
+         id="stop3788-1" />
+      <stop
+         style="stop-color:#9a7347;stop-opacity:0;"
+         offset="1"
+         id="stop3790-2" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="DistanceStart-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DistanceStart">
+      <g
+         id="g2300-0">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#ffffff;stroke-width:1.14999998;stroke-linecap:square"
+           d="M 0,0 2,0"
+           id="path2306-3" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 13,4 9,0 13,-4 0,0 z"
+           id="path2302-8" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 0,40"
+           id="path2304-4" />
+      </g>
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DistanceEnd-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DistanceEnd">
+      <g
+         id="g2301-5">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#ffffff;stroke-width:1.14999998;stroke-linecap:square"
+           d="M 0,0 -2,0"
+           id="path2316-6" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#000000;fill-rule:evenodd;stroke:none"
+           d="M 0,0 -13,4 -9,0 -13,-4 0,0 z"
+           id="path2312-4" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square"
+           d="M 0,-4 0,40"
+           id="path2314-8" />
+      </g>
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3786-6"
+       id="linearGradient3794-1"
+       x1="200.55081"
+       y1="657.39252"
+       x2="447.96713"
+       y2="404.8544"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3786-6">
+      <stop
+         style="stop-color:#9a7347;stop-opacity:1;"
+         offset="0"
+         id="stop3788-9" />
+      <stop
+         style="stop-color:#9a7347;stop-opacity:0;"
+         offset="1"
+         id="stop3790-6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3786-6"
+       id="linearGradient5720"
+       gradientUnits="userSpaceOnUse"
+       x1="200.55081"
+       y1="657.39252"
+       x2="447.96713"
+       y2="404.8544" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3786"
+       id="linearGradient5729"
+       gradientUnits="userSpaceOnUse"
+       x1="200.55081"
+       y1="657.39252"
+       x2="447.96713"
+       y2="404.8544" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="1083.873"
+     inkscape:cy="747.24537"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="1032"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,2.2302535e-5)">
+    <g
+       id="g5722"
+       transform="translate(129.29953,-4.0406102)"
+       inkscape:export-filename="/home/andreas/haw/mt/Baumgartner/ausarbeitung/graphics/gravitation.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
+      <path
+         transform="translate(8.0989756,416.76659)"
+         d="m 517.19811,250.30106 c 0,5.57891 -4.5226,10.10152 -10.10152,10.10152 -5.57892,0 -10.10153,-4.52261 -10.10153,-10.10152 0,-5.57892 4.52261,-10.10153 10.10153,-10.10153 5.57892,0 10.10152,4.52261 10.10152,10.10153 z"
+         sodipodi:ry="10.101525"
+         sodipodi:rx="10.101525"
+         sodipodi:cy="250.30106"
+         sodipodi:cx="507.09659"
+         id="path2989"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-52.527934,379.81735)"
+         sodipodi:end="6.2831853"
+         sodipodi:start="4.712389"
+         d="m 202.03051,298.78839 c 197.49371,0 357.59399,160.10029 357.59399,357.59399 l -357.594,10e-6 z"
+         sodipodi:ry="357.59399"
+         sodipodi:rx="357.59399"
+         sodipodi:cy="656.38239"
+         sodipodi:cx="202.0305"
+         id="path3013"
+         style="fill:url(#linearGradient5729);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3829"
+         d="M 33.58524,920.93361 401.44238,553.07646"
+         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DistanceStart);marker-mid:none;marker-end:url(#DistanceEnd)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5227"
+         y="783.79071"
+         x="240.7281"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:72px;font-weight:bold;-inkscape-font-specification:Sans Bold"
+           y="783.79071"
+           x="240.7281"
+           id="tspan5229"
+           sodipodi:role="line">r</tspan></text>
+    </g>
+    <g
+       id="g5713"
+       transform="translate(263.58524,-9.7982702)"
+       inkscape:export-filename="/home/andreas/haw/mt/Baumgartner/ausarbeitung/graphics/gravitation.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
+      <path
+         transform="translate(421.96443,529.13139)"
+         d="m 517.19811,250.30106 c 0,5.57891 -4.5226,10.10152 -10.10152,10.10152 -5.57892,0 -10.10153,-4.52261 -10.10153,-10.10152 0,-5.57892 4.52261,-10.10153 10.10153,-10.10153 5.57892,0 10.10152,4.52261 10.10152,10.10153 z"
+         sodipodi:ry="10.101525"
+         sodipodi:rx="10.101525"
+         sodipodi:cy="250.30106"
+         sodipodi:cx="507.09659"
+         id="path2989-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(466.15895,385.57501)"
+         sodipodi:end="6.2831853"
+         sodipodi:start="4.712389"
+         d="m 202.03051,298.78839 c 197.49371,0 357.59399,160.10029 357.59399,357.59399 l -357.594,10e-6 z"
+         sodipodi:ry="357.59399"
+         sodipodi:rx="357.59399"
+         sodipodi:cy="656.38239"
+         sodipodi:cx="202.0305"
+         id="path3013-2"
+         style="fill:url(#linearGradient5720);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5227-2"
+         y="826.69122"
+         x="710.84357"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:72px;font-weight:bold;-inkscape-font-specification:Sans Bold"
+           y="826.69122"
+           x="710.84357"
+           id="tspan5229-3"
+           sodipodi:role="line">r</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path5303"
+         d="M 554.29262,927.09605 814.82833,666.56033"
+         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DistanceStart-8);marker-end:url(#DistanceEnd-1)" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="141.44997"
+       y="647.36218"
+       id="text5731"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/andreas/haw/mt/Baumgartner/ausarbeitung/graphics/gravitation.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan5733"
+         x="141.44997"
+         y="647.36218">1)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="798.86884"
+       y="647.36218"
+       id="text5735"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       inkscape:export-filename="/home/andreas/haw/mt/Baumgartner/ausarbeitung/graphics/gravitation.png"><tspan
+         sodipodi:role="line"
+         id="tspan5737"
+         x="798.86884"
+         y="647.36218">2)</tspan></text>
+  </g>
+</svg>
