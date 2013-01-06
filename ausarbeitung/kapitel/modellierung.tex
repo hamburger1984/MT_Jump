@@ -13,6 +13,8 @@ Der Aufstieg wird im Rahmen dieser Arbeit nicht weiter betrachtet.
 Interessanter ist der Fall - vor allem der ungebremste Abschnitt von Absprung bis zum Öffnen des Fallschirms.
 Um dies zu simulieren, müssen relevante Kräfte und Größen berücksichtigt werden. %identifiziert und modelliert werden.
 
+Seitenwinde und mögliche Rotation werden ignoriert.
+Als Masse für Springer und Ausrüstung werden $140kg$ angeommen.
 Auf den Springer und seine Ausrüstung wirken lediglich zwei Kräfte:
 \begin{description}
   \item[$F_g$] Zur Erde hin wirkt die Gravitation.
@@ -21,14 +23,13 @@ Auf den Springer und seine Ausrüstung wirken lediglich zwei Kräfte:
 
 Die ausschlaggebenden Größen werden im Folgenden beschrieben.
 
-
 \subsection{Gravitation}
 Die Gravitation wirkt zwischen dem Springer und der Erde.
 Allgemein wird hier das newtonsches Gravitationsgesetz angewendet.
 \begin{equation}
 F_g=G \frac{m_1 m_2}{r^2}
 \end{equation}
-Dabei ist $G$ die Gravitationskonstante $6.67384\times 10^{-11} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
+Dabei ist $G$ die Gravitationskonstante $66,7384\times 10^{-12} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
 
 Bis auf $r$ (der Springer bewegt sich ja auf die Erde zu) sind hier alle Größen konstant.
 $r$ ist dabei gleich dem Radius der Erde plus der Höhe des Springers \vgl Abb.~\ref{fig:gravitation}.
@@ -39,6 +40,15 @@ $r$ ist dabei gleich dem Radius der Erde plus der Höhe des Springers \vgl Abb.~
   \label{fig:gravitation}
 \end{figure}
 
+Als Erdradius wird der Äquatorradius $R_A=6.378.137m$ angenommen, als Masse des Springers $m_1=140kg$, als Masse der Erde $m_2=5,9736\times 10^{24}kg$.
+Die Kraft, die auf den Springer auf Erdniveau herrscht beträgt
+\begin{eqnarray}
+F_{g0} &=& 66,7384\times 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{6.378.137^2} \\
+ &=& 1.372 N \nonumber
+\end{eqnarray}
+
+Die Challenger zerbrach in $15km$ Höhe, der Sprung Baumgartners erfolgte aus knapp $40km$.
+Um den Effekt der Höhenänderung möglichs deutlich zu zeigen wird
 
 \subsection{Atmosphäre}
 Die Atmosphäre ist keine homogene Gasblase.
@@ -48,14 +58,8 @@ Für die Simulation sind dabei die Temperatur und die Dichte in der jeweiligen H
 \subsubsection{Dichte}
 Mit steigender Höhe nimmt die Dichte ab, da die darüberliegendes Gassäule kürzer wird.
 
-
 \subsubsection{Temperatur}
-
-
 
 \subsection{Strömungswiderstand}
 
 \subsubsection{Überschallflug}
-
-
-
