@@ -46,7 +46,7 @@ F_{g0} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{6.378.137^2
  &=& 1.372 N \nonumber
 \end{eqnarray}
 Die Challenger zerbrach in $15km$ Höhe, der Sprung Baumgartners erfolgte aus knapp $40km$.
-Um den Effekt der Höhenänderung möglichs deutlich zu zeigen wird als zweiter Wert die Gravitationskraft in $40km$ Höhe berechnet.
+Um den Effekt der Höhenänderung deutlich zu zeigen wird als zweiter Wert die Gravitationskraft in $40km$ Höhe berechnet.
 \begin{eqnarray}
 F_{g1} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{\left(6.378.137 + 40.000\right)^2} \\
  &=& 1.354,9 N \nonumber
@@ -54,15 +54,22 @@ F_{g1} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{\left(6.378
 Die Gravitationkraft nimmt in Absprunghöhe gegenüber der auf Erdniveau herrschenden um knapp $2\%$ ab.
 
 \subsection{Luftwiderstand}
-Die Atmosphäre ist keine homogene Gasblase.
-Sie ist komplexer aufgebaut.
-Für die Simulation sind dabei die Temperatur und die Dichte in der jeweiligen Höhe von Bedeutung.
+Der Fall des Springers wird durch den von der Atmosphäre verursachten Strömungswiderstand gebremst.
+\begin{equation}
+F_L=\frac{1}{2}pv^2c_wA
+\end{equation}
+In die Berechnung der Kraft gehen die Geschwindigkeit $v$, die Widerstandsfläche (das Produkt aus $c_w$ und $A$) und die Dichte $p$ ein.
+Die Dichte der Atmosphäre ist höhenabhängig.
+Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
+Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
 
-\subsubsection{Dichte}
+\paragraph{Dichte}
 Mit steigender Höhe nimmt die Dichte ab, da die darüberliegendes Gassäule kürzer wird.
+Mit der barometrischen Höhenformel lässt sich der Druck in abhängigkeit von der Höhe beschreiben.
 
-\subsubsection{Temperatur}
 
-\subsection{Strömungswiderstand}
 
-\subsubsection{Überschallflug}
+\paragraph{Temperatur}
+
+\paragraph{Schallgeschwindigkeit}
+
