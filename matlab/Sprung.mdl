@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.8"
+    ComputedModelVersion    "1.16"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,14 +26,14 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jan  8 15:10:50 2013"
+  LastModifiedDate	  "Tue Jan  8 17:13:10 2013"
   RTWModifiedTimeStamp	  279546843
-  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
-  WideLines		  off
+  WideLines		  on
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
   ShowLoopsOnError	  on
@@ -126,7 +126,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.11.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10.0"
+	  StopTime		  "9999"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -600,8 +600,8 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Simulation Target"
-      ConfigPrmDlgPosition     [ 1440, 204, 2507, 1031 ] 
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 1440, 120, 2523, 1047 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -642,13 +642,6 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      BusCreator
-      Inputs		      "4"
-      DisplayOption	      "none"
-      OutDataTypeStr	      "Inherit: auto"
-      NonVirtualBus	      off
-    }
-    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -660,6 +653,137 @@ Model {
       SampleTime	      "inf"
       FramePeriod	      "inf"
       PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+      SFunctionDeploymentMode off
+    }
+    Block {
+      BlockType		      Scope
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Stop
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+    }
+    Block {
+      BlockType		      Terminator
     }
   }
   System {
@@ -678,15 +802,67 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "14"
+    SIDHighWatermark	    "37"
     Block {
-      BlockType		      BusCreator
-      Name		      "Bus\nCreator"
-      SID		      "10"
-      Ports		      [3, 1]
-      Position		      [180, 286, 185, 324]
+      BlockType		      Gain
+      Name		      "-> [m/s]"
+      SID		      "21"
+      Position		      [150, 138, 230, 192]
+      Gain		      "1000/3600"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "->[m]"
+      SID		      "22"
+      Position		      [150, 42, 230, 98]
+      Gain		      "1000"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Compare\nTo Zero"
+      SID		      "36"
+      Ports		      [1, 1]
+      Position		      [935, 330, 965, 360]
+      LibraryVersion	      "1.236"
+      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+      SourceType	      "Compare To Zero"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      GeneratePreprocessorConditionals off
+      relop		      "<="
+      LogicOutDataTypeMode    "boolean"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      SID		      "27"
+      Ports		      [1, 2]
+      Position		      [365, 316, 370, 354]
       ShowName		      off
-      Inputs		      "3"
+      Outputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      SID		      "28"
+      Ports		      [1, 9]
+      Position		      [365, 370, 370, 470]
+      ShowName		      off
+      Outputs		      "9"
       DisplayOption	      "bar"
     }
     Block {
@@ -704,11 +880,179 @@ Model {
       Value		      "104"
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "MATLAB Function"
+      SID		      "25"
+      Ports		      [4, 1]
+      Position		      [525, 367, 635, 468]
+      LibraryVersion	      "1.32"
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "Stateflow"
+      MaskDescription	      "Embedded MATLAB block"
+      MaskSelfModifiable      on
+      MaskDisplay	      "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('pr"
+      "ivate/eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'beschleunigung']);"
+      MaskIconFrame	      on
+      MaskIconOpaque	      off
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "normalized"
+      System {
+	Name			"MATLAB Function"
+	Location		[257, 457, 812, 717]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"20"
+	Block {
+	  BlockType		  Inport
+	  Name			  "mS"
+	  SID			  "25::1"
+	  Position		  [20, 101, 40, 119]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "h"
+	  SID			  "25::18"
+	  Position		  [20, 136, 40, 154]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "p"
+	  SID			  "25::19"
+	  Position		  [20, 171, 40, 189]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "v"
+	  SID			  "25::20"
+	  Position		  [20, 206, 40, 224]
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "25::15"
+	  Ports			  [1, 1]
+	  Position		  [270, 205, 320, 245]
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "25::14"
+	  Tag			  "Stateflow S-Function Sprung 2"
+	  Ports			  [4, 2]
+	  Position		  [180, 102, 230, 203]
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[4 2]"
+	  EnableBusSupport	  on
+	  Port {
+	    PortNumber		    2
+	    Name		    "a"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "25::17"
+	  Position		  [460, 216, 480, 234]
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "a"
+	  SID			  "25::5"
+	  Position		  [460, 101, 480, 119]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "mS"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "h"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "p"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "v"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "a"
+	  Labels		  [0, 0; 0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "a"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      SID		      "26"
+      Ports		      [3, 1]
+      Position		      [180, 286, 185, 324]
+      ShowName		      off
+      Inputs		      "3"
+      DisplayOption	      "bar"
+    }
+    Block {
       BlockType		      Reference
       Name		      "NRLMSISE-00\nAtmosphere Model"
       SID		      "3"
       Ports		      [4, 2]
-      Position		      [250, 300, 370, 430]
+      Position		      [215, 300, 335, 430]
       LibraryVersion	      "1.155"
       SourceBlock	      "aerolibatmos2/NRLMSISE-00\nAtmosphere Model"
       SourceType	      "NRLMSISE-00 Model"
@@ -730,6 +1074,47 @@ Model {
       action		      "Warning"
     }
     Block {
+      BlockType		      Stop
+      Name		      "Stop Simulation"
+      SID		      "37"
+      Position		      [995, 327, 1030, 363]
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "T(h) [K]"
+      SID		      "29"
+      Ports		      [1]
+      Position		      [440, 604, 470, 636]
+      Floating		      off
+      Location		      [2520, 317, 2844, 556]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "a [m/s²]"
+      SID		      "33"
+      Ports		      [1]
+      Position		      [935, 659, 965, 691]
+      Floating		      off
+      Location		      [726, 490, 1436, 867]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      Constant
       Name		      "dayOfYear"
       SID		      "7"
@@ -737,18 +1122,62 @@ Model {
       Value		      "288"
     }
     Block {
-      BlockType		      Constant
-      Name		      "h0"
-      SID		      "4"
-      Position		      [35, 56, 105, 84]
-      Value		      "40000"
+      BlockType		      Integrator
+      Name		      "h"
+      SID		      "16"
+      Ports		      [2, 1]
+      Position		      [830, 379, 870, 446]
+      InitialConditionSource  "external"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "h [m]"
+      SID		      "31"
+      Ports		      [1]
+      Position		      [935, 549, 965, 581]
+      Floating		      off
+      Location		      [3, 50, 719, 868]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Constant
-      Name		      "mS"
+      Name		      "h0 [km]"
+      SID		      "4"
+      Position		      [35, 56, 105, 84]
+      Value		      "39.045"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "mS [kg]"
       SID		      "13"
       Position		      [35, 100, 105, 130]
       Value		      "140"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "p(h) [kg/m³]"
+      SID		      "30"
+      Ports		      [1]
+      Position		      [440, 549, 470, 581]
+      Floating		      off
+      Location		      [2321, 311, 3033, 979]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Constant
@@ -758,8 +1187,34 @@ Model {
       Value		      "65280"
     }
     Block {
+      BlockType		      Integrator
+      Name		      "v"
+      SID		      "15"
+      Ports		      [2, 1]
+      Position		      [710, 378, 750, 447]
+      InitialConditionSource  "external"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "v [m/s]"
+      SID		      "32"
+      Ports		      [1]
+      Position		      [935, 604, 965, 636]
+      Floating		      off
+      Location		      [726, 54, 1436, 430]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      SaveName		      "ScopeData3"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      Constant
-      Name		      "v0"
+      Name		      "v0 [km/h]"
       SID		      "5"
       Position		      [35, 151, 105, 179]
       Value		      "0"
@@ -775,19 +1230,19 @@ Model {
       SrcBlock		      "Latitude"
       SrcPort		      1
       Points		      [45, 0; 0, 45]
-      DstBlock		      "Bus\nCreator"
+      DstBlock		      "Mux"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Longitude"
       SrcPort		      1
-      DstBlock		      "Bus\nCreator"
+      DstBlock		      "Mux"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Bus\nCreator"
+      SrcBlock		      "Mux"
       SrcPort		      1
-      Points		      [45, 0]
+      Points		      [10, 0]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      1
     }
@@ -800,16 +1255,154 @@ Model {
     Line {
       SrcBlock		      "dayOfYear"
       SrcPort		      1
-      Points		      [140, 0; 0, -15]
+      Points		      [120, 0; 0, -15]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      3
     }
     Line {
       SrcBlock		      "utcSeconds"
       SrcPort		      1
-      Points		      [140, 0]
+      Points		      [105, 0]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      4
+    }
+    Line {
+      SrcBlock		      "h"
+      SrcPort		      1
+      Points		      [40, 0]
+      Branch {
+	Points			[140, 0; 0, -130; -605, 0]
+	Branch {
+	  Points		  [-300, 0; 0, 35]
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Branch {
+	  Points		  [0, 125]
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  2
+	}
+      }
+      Branch {
+	Points			[0, 155]
+	DstBlock		"h [m]"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -65]
+	DstBlock		"Compare\nTo Zero"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
+      SrcPort		      2
+      Points		      [10, 0]
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
+      SrcPort		      1
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "v0 [km/h]"
+      SrcPort		      1
+      DstBlock		      "-> [m/s]"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "h0 [km]"
+      SrcPort		      1
+      DstBlock		      "->[m]"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      Points		      [20, 0; 0, 275]
+      DstBlock		      "T(h) [K]"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "mS [kg]"
+      SrcPort		      1
+      Points		      [360, 0; 0, 265]
+      DstBlock		      "MATLAB Function"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "MATLAB Function"
+      SrcPort		      1
+      Points		      [25, 0]
+      Branch {
+	Points			[0, -20]
+	DstBlock		"v"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 260]
+	DstBlock		"a [m/s²]"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      6
+      Points		      [30, 0]
+      Branch {
+	DstBlock		"MATLAB Function"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, 135]
+	DstBlock		"p(h) [kg/m³]"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "-> [m/s]"
+      SrcPort		      1
+      Points		      [460, 0]
+      DstBlock		      "v"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "->[m]"
+      SrcPort		      1
+      Points		      [535, 0; 0, 360]
+      DstBlock		      "h"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "v"
+      SrcPort		      1
+      Points		      [50, 0]
+      Branch {
+	Points			[0, -20]
+	DstBlock		"h"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 205]
+	Branch {
+	  DstBlock		  "v [m/s]"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [-295, 0]
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  4
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Compare\nTo Zero"
+      SrcPort		      1
+      DstBlock		      "Stop Simulation"
+      DstPort		      1
     }
   }
 }
@@ -826,11 +1419,197 @@ Stateflow {
     name		    "Sprung"
     created		    "28-Dec-2012 18:56:06"
     isLibrary		    0
-    firstTarget		    2
+    firstTarget		    12
+    debug {
+    }
     sfVersion		    75014001
   }
-  target {
+  chart {
     id			    2
+    name		    "MATLAB Function"
+    windowPosition	    [375.75 203.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 3120 1050 1.25]
+    treeNode		    [0 3 0 0]
+    firstTransition	    5
+    firstJunction	    4
+    viewObj		    2
+    machine		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    8
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    6
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "beschleunigung"
+    }
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function a = beschleunigung(mS, h, p, v)\n%#codegen\n\n% Erdmasse [kg]\nmE=5.9736*10^24;\n% Erdra"
+      "dius (Äquator) [m]\nrE=6378137;\n\n% Springer cW*A\ncwA=1.07;\n\n% Gravitationskonstante [m³/(kg*s²)]\nG=66.7"
+      "384*10^-12;\n\na=(-G*(mS*mE)/(rE+h)^2 + 0.5*p*v^2*cwA)/mS;"
+      editorLayout	      "100 M4x1[1481 156 1080 733]"
+    }
+  }
+  junction {
+    id			    4
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    5
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      4
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    2
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    6
+    ssIdNumber		    4
+    name		    "mS"
+    linkNode		    [2 0 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    5
+    name		    "a"
+    linkNode		    [2 6 8]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    6
+    name		    "h"
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    7
+    name		    "p"
+    linkNode		    [2 8 10]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    10
+    ssIdNumber		    8
+    name		    "v"
+    linkNode		    [2 9 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    11
+    name		    "MATLAB Function"
+    machine		    1
+    chart		    2
+  }
+  target {
+    id			    12
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
