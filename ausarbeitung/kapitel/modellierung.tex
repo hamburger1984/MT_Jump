@@ -31,7 +31,7 @@ F_g=G \frac{m_1 m_2}{r^2}
 \end{equation}
 Dabei ist $G$ die Gravitationskonstante $66,7384\times 10^{-12} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
 Bis auf $r$ (der Springer bewegt sich ja auf die Erde zu) sind hier alle Größen konstant.
-$r$ ist dabei gleich dem Radius der Erde plus der Höhe des Springers \vgl Abb.~\ref{fig:gravitation}.
+$r$ ist dabei gleich dem Radius der Erde $r_E$ plus der Höhe des Springers $h$ \vgl Abb.~\ref{fig:gravitation}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{gravitation}
@@ -39,7 +39,7 @@ $r$ ist dabei gleich dem Radius der Erde plus der Höhe des Springers \vgl Abb.~
   \label{fig:gravitation}
 \end{figure}
 
-Als Erdradius wird der Äquatorradius $R_A=6.378.137m$ angenommen, als Masse des Springers $m_1=140kg$, als Masse der Erde $m_2=5,9736\times 10^{24}kg$.
+Als Erdradius wird der Äquatorradius $r_E=6.378.137m$ angenommen, als Masse des Springers $m_S=140kg$, als Masse der Erde $m_E=5,9736\times 10^{24}kg$.
 Die Kraft, die auf den Springer auf Erdniveau herrscht beträgt
 \begin{eqnarray}
 F_{g0} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{6.378.137^2} \\
@@ -52,6 +52,7 @@ F_{g1} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{\left(6.378
  &=& 1.354,9 N \nonumber
 \end{eqnarray}
 Die Gravitationkraft nimmt in Absprunghöhe gegenüber der auf Erdniveau herrschenden um knapp $2\%$ ab.
+Die Veränderung ist nicht groß, wird aber in der Simulation berücksichtigt.
 
 \subsection{Luftwiderstand}
 Der Fall des Springers wird durch den von der Atmosphäre verursachten Strömungswiderstand gebremst.
@@ -61,7 +62,9 @@ F_L=\frac{1}{2}pv^2c_wA
 In die Berechnung der Kraft gehen die Geschwindigkeit $v$, die Widerstandsfläche (das Produkt aus $c_w$ und $A$) und die Dichte $p$ ein.
 Die Dichte der Atmosphäre ist höhenabhängig.
 Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
-Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
+%Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
+
+
 
 \paragraph{Dichte und Temperatur}
 Mit steigender Höhe nimmt die Dichte ab, da die darüberliegendes Gassäule kürzer wird.
@@ -72,7 +75,23 @@ Darüber nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Eins
 
 Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet.
 Es liefert für die Parameter Datum, Uhrzeit, geographische Position und eine Höhe von 0 bis 100km Werte für Dichte und Temperatur.
+Für die Simulation wird hier lediglich die Höhe variiert.
+Die anderen Parameter werden konstant vorbelegt.
+Das Modell stellt so eine Funktion $p=f(h)$ bereit.
 
+\paragraph{Widerstandsfläche}
+Die Widerstandsfläche vom Springer im freien Fall beträgt $1,07$~\cite[59]{redbulletin:stratosspecialde}.
+Mit geöffnetem Fallschirm beträgt die Widerstandsfläche $c_wA=1,4\cdot25=35$.
 
-\paragraph{Schallgeschwindigkeit}
+%\paragraph{Schallgeschwindigkeit}
+\subsection{Gesamtmodell}
 
+Die resultierende Kraft (in Richtung Höhe) auf den Springer ist die Luftreibung minus der Gravitationskraft.
+\begin{eqnarray*}
+  F_S &=& -F_g+F_L \\
+  a_Sm_S &=& -F_g+F_L
+\end{eqnarray*}
+Die für das Modell benötigte Beschleunigung erhält man, indem durch die Masse des Springers dividiert wird.
+\begin{equation}
+  a_S = \frac{-F_g+F_L}{m_S} = \frac{-G\frac{m_Sm_E}{(r_E+h)^2}+\frac{1}{2}pv^2c_wA}{m_S}
+\end{equation}
