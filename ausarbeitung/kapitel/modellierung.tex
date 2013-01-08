@@ -17,7 +17,7 @@ Seitenwinde und mögliche Rotation werden ignoriert.
 Als Masse für Springer und Ausrüstung werden $140kg$ angeommen.
 Auf den Springer und seine Ausrüstung wirken lediglich zwei Kräfte:
 \begin{description}
-  \item[$F_g$] Zur Erde hin wirkt die Gravitation.
+  \item[$F_G$] Zur Erde hin wirkt die Gravitation.
   \item[$F_L$] Bremsend wirkt der Luftwiderstand, der sich bei Öffnen des Fallschirms massiv erhöht.
 \end{description}
 
@@ -27,7 +27,7 @@ Die ausschlaggebenden Größen werden im Folgenden beschrieben.
 Die Gravitation wirkt zwischen dem Springer und der Erde.
 Allgemein wird hier das newtonsches Gravitationsgesetz angewendet.
 \begin{equation}
-F_g=G \frac{m_1 m_2}{r^2}
+F_G=G \frac{m_1 m_2}{r^2}
 \end{equation}
 Dabei ist $G$ die Gravitationskonstante $66,7384\times 10^{-12} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
 Bis auf $r$ (der Springer bewegt sich ja auf die Erde zu) sind hier alle Größen konstant.
@@ -66,17 +66,16 @@ Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
 
 
 
-\paragraph{Dichte und Temperatur}
-Mit steigender Höhe nimmt die Dichte ab, da die darüberliegendes Gassäule kürzer wird.
+\paragraph{Atmosphärenmodell}
+Mit steigender Höhe nimmt der Luftdruck ab, da die darüberliegende Gassäule kürzer und somit leichter wird.
 Auch die Temperatur ist höhenabhängig.
-Zunächste ist die Temperatur der Erdoberfläche der ausschlaggebende Faktor.
+Zunächst ist die Temperatur der Erdoberfläche der ausschlaggebende Faktor.
 Mit zunehmender Höhe nimmt dieser Einfluss ab und die Temperatur sinkt.
-Darüber nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Einstrahlung von darüberliegenden Atmosphärenschichten gefiltert wird.
+Darüber nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Einstrahlung von darüberliegenden Atmosphärenschichten blockiert wird.
 
 Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet.
-Es liefert für die Parameter Datum, Uhrzeit, geographische Position und eine Höhe von 0 bis 100km Werte für Dichte und Temperatur.
-Für die Simulation wird hier lediglich die Höhe variiert.
-Die anderen Parameter werden konstant vorbelegt.
+Es liefert für die Parameter Datum, Uhrzeit, geographische Position und einem Höhenbereich von $0$ bis $100km$ Werte für Dichte und Temperatur.
+Für die Simulation wird hier lediglich die Höhe variiert und die anderen Parameter auf das Ort und Zeit des Baumgartner-Experiments konstant vorbelegt.
 Das Modell stellt so eine Funktion $p=f(h)$ bereit.
 
 \paragraph{Widerstandsfläche}
@@ -88,10 +87,10 @@ Mit geöffnetem Fallschirm beträgt die Widerstandsfläche $c_wA=1,4\cdot25=35$.
 
 Die resultierende Kraft (in Richtung Höhe) auf den Springer ist die Luftreibung minus der Gravitationskraft.
 \begin{eqnarray*}
-  F_S &=& -F_g+F_L \\
-  a_Sm_S &=& -F_g+F_L
+  F_S &=& -F_G+F_L \\
+  a_Sm_S &=& -F_G+F_L
 \end{eqnarray*}
 Die für das Modell benötigte Beschleunigung erhält man, indem durch die Masse des Springers dividiert wird.
 \begin{equation}
-  a_S = \frac{-F_g+F_L}{m_S} = \frac{-G\frac{m_Sm_E}{(r_E+h)^2}+\frac{1}{2}pv^2c_wA}{m_S}
+  a_S = \frac{-F_G+F_L}{m_S} = \frac{-G\frac{m_Sm_E}{(r_E+h)^2}+\frac{1}{2}pv^2c_wA}{m_S}
 \end{equation}

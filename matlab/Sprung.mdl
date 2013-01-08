@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.16"
+    ComputedModelVersion    "1.38"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jan  8 17:13:10 2013"
-  RTWModifiedTimeStamp	  279546843
-  ModelVersionFormat	  "1.%<AutoIncrement:16>"
+  LastModifiedDate	  "Tue Jan  8 19:16:27 2013"
+  RTWModifiedTimeStamp	  279571259
+  ModelVersionFormat	  "1.%<AutoIncrement:38>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -783,12 +783,27 @@ Model {
       GeneratePreprocessorConditionals off
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
   }
   System {
     Name		    "Sprung"
-    Location		    [1442, 50, 2515, 1046]
+    Location		    [1556, 174, 2647, 1046]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -802,7 +817,39 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "37"
+    SIDHighWatermark	    "56"
+    Block {
+      BlockType		      Gain
+      Name		      "-> [km/h]"
+      SID		      "49"
+      Position		      [850, 624, 940, 666]
+      Gain		      "-3600/1000"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"v [km/h]"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "-> [km]"
+      SID		      "52"
+      Position		      [870, 559, 925, 601]
+      Gain		      "1/1000"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"h [km]"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
     Block {
       BlockType		      Gain
       Name		      "-> [m/s]"
@@ -815,7 +862,7 @@ Model {
     }
     Block {
       BlockType		      Gain
-      Name		      "->[m]"
+      Name		      "-> [m]"
       SID		      "22"
       Position		      [150, 42, 230, 98]
       Gain		      "1000"
@@ -824,11 +871,24 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Constant
+      Name		      "A Jumper"
+      SID		      "39"
+      Position		      [55, 265, 85, 295]
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "A Parachute"
+      SID		      "44"
+      Position		      [55, 370, 85, 400]
+      Value		      "25"
+    }
+    Block {
       BlockType		      Reference
       Name		      "Compare\nTo Zero"
       SID		      "36"
       Ports		      [1, 1]
-      Position		      [935, 330, 965, 360]
+      Position		      [955, 355, 985, 385]
       LibraryVersion	      "1.236"
       SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
       SourceType	      "Compare To Zero"
@@ -850,7 +910,7 @@ Model {
       Name		      "Demux"
       SID		      "27"
       Ports		      [1, 2]
-      Position		      [365, 316, 370, 354]
+      Position		      [350, 521, 355, 559]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
@@ -860,31 +920,57 @@ Model {
       Name		      "Demux1"
       SID		      "28"
       Ports		      [1, 9]
-      Position		      [365, 370, 370, 470]
+      Position		      [350, 570, 355, 670]
       ShowName		      off
       Outputs		      "9"
       DisplayOption	      "bar"
     }
     Block {
+      BlockType		      Demux
+      Name		      "Demux2"
+      SID		      "47"
+      Ports		      [1, 2]
+      Position		      [455, 463, 460, 492]
+      ShowName		      off
+      Outputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Switch
+      Name		      "Deploy parachute?"
+      SID		      "40"
+      Position		      [305, 325, 400, 365]
+      Criteria		      "u2 > Threshold"
+      Threshold		      "1500"
+      InputSameDT	      off
+      SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"cw, A"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
       BlockType		      Constant
       Name		      "Latitude"
       SID		      "11"
-      Position		      [35, 235, 65, 265]
+      Position		      [40, 445, 70, 475]
       Value		      "33"
     }
     Block {
       BlockType		      Constant
       Name		      "Longitude"
       SID		      "12"
-      Position		      [35, 290, 65, 320]
+      Position		      [40, 500, 70, 530]
       Value		      "104"
     }
     Block {
       BlockType		      SubSystem
       Name		      "MATLAB Function"
       SID		      "25"
-      Ports		      [4, 1]
-      Position		      [525, 367, 635, 468]
+      Ports		      [6, 1]
+      Position		      [545, 396, 655, 499]
       LibraryVersion	      "1.32"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -906,6 +992,13 @@ Model {
       MaskIconRotate	      "none"
       MaskPortRotate	      "default"
       MaskIconUnits	      "normalized"
+      Port {
+	PortNumber		1
+	Name			"a"
+	PropagatedSignals	"a"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
       System {
 	Name			"MATLAB Function"
 	Location		[257, 457, 812, 717]
@@ -921,7 +1014,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"20"
+	SIDHighWatermark	"22"
 	Block {
 	  BlockType		  Inport
 	  Name			  "mS"
@@ -954,11 +1047,27 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "cw"
+	  SID			  "25::21"
+	  Position		  [20, 246, 40, 264]
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "A"
+	  SID			  "25::22"
+	  Position		  [20, 281, 40, 299]
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
 	  SID			  "25::15"
 	  Ports			  [1, 1]
-	  Position		  [270, 205, 320, 245]
+	  Position		  [270, 245, 320, 285]
 	  Outputs		  "1"
 	}
 	Block {
@@ -966,10 +1075,10 @@ Model {
 	  Name			  " SFunction "
 	  SID			  "25::14"
 	  Tag			  "Stateflow S-Function Sprung 2"
-	  Ports			  [4, 2]
-	  Position		  [180, 102, 230, 203]
+	  Ports			  [6, 2]
+	  Position		  [180, 102, 230, 243]
 	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[4 2]"
+	  PortCounts		  "[6 2]"
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
@@ -982,7 +1091,7 @@ Model {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
 	  SID			  "25::17"
-	  Position		  [460, 216, 480, 234]
+	  Position		  [460, 256, 480, 274]
 	}
 	Block {
 	  BlockType		  Outport
@@ -1016,6 +1125,18 @@ Model {
 	  DstPort		  4
 	}
 	Line {
+	  SrcBlock		  "cw"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "A"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  6
+	}
+	Line {
 	  Name			  "a"
 	  Labels		  [0, 0; 0, 0]
 	  SrcBlock		  " SFunction "
@@ -1042,17 +1163,51 @@ Model {
       Name		      "Mux"
       SID		      "26"
       Ports		      [3, 1]
-      Position		      [180, 286, 185, 324]
+      Position		      [150, 521, 155, 559]
       ShowName		      off
       Inputs		      "3"
       DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      SID		      "43"
+      Ports		      [2, 1]
+      Position		      [125, 236, 130, 274]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"cw, A"
+	PropagatedSignals	", "
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux2"
+      SID		      "45"
+      Ports		      [2, 1]
+      Position		      [125, 341, 130, 379]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"cw, A"
+	PropagatedSignals	", "
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Reference
       Name		      "NRLMSISE-00\nAtmosphere Model"
       SID		      "3"
       Ports		      [4, 2]
-      Position		      [215, 300, 335, 430]
+      Position		      [190, 520, 310, 650]
       LibraryVersion	      "1.155"
       SourceBlock	      "aerolibatmos2/NRLMSISE-00\nAtmosphere Model"
       SourceType	      "NRLMSISE-00 Model"
@@ -1077,31 +1232,34 @@ Model {
       BlockType		      Stop
       Name		      "Stop Simulation"
       SID		      "37"
-      Position		      [995, 327, 1030, 363]
+      Position		      [1015, 352, 1050, 388]
     }
     Block {
       BlockType		      Scope
       Name		      "T(h) [K]"
       SID		      "29"
       Ports		      [1]
-      Position		      [440, 604, 470, 636]
+      Position		      [440, 699, 470, 731]
       Floating		      off
-      Location		      [2520, 317, 2844, 556]
-      Open		      off
+      Location		      [2285, 54, 3115, 519]
+      Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
+      TimeRange		      "500"
+      YMin		      "200"
+      YMax		      "300"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Scope
-      Name		      "a [m/s²]"
-      SID		      "33"
+      Name		      "acceleration"
+      SID		      "56"
       Ports		      [1]
-      Position		      [935, 659, 965, 691]
+      Position		      [1015, 684, 1045, 716]
       Floating		      off
       Location		      [726, 490, 1436, 867]
       Open		      on
@@ -1110,15 +1268,32 @@ Model {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
+      TimeRange		      "500"
+      YMin		      "-50"
+      YMax		      "300"
       SaveName		      "ScopeData4"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
     Block {
       BlockType		      Constant
+      Name		      "cw Jumper"
+      SID		      "38"
+      Position		      [55, 215, 85, 245]
+      Value		      "1.07"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "cw Parachute"
+      SID		      "46"
+      Position		      [55, 320, 85, 350]
+      Value		      "1.33"
+    }
+    Block {
+      BlockType		      Constant
       Name		      "dayOfYear"
       SID		      "7"
-      Position		      [35, 380, 65, 410]
+      Position		      [40, 590, 70, 620]
       Value		      "288"
     }
     Block {
@@ -1126,15 +1301,28 @@ Model {
       Name		      "h"
       SID		      "16"
       Ports		      [2, 1]
-      Position		      [830, 379, 870, 446]
+      Position		      [850, 404, 890, 471]
       InitialConditionSource  "external"
+      Port {
+	PortNumber		1
+	Name			"h"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "h0 [km]"
+      SID		      "4"
+      Position		      [35, 56, 105, 84]
+      Value		      "39.045"
     }
     Block {
       BlockType		      Scope
-      Name		      "h [m]"
-      SID		      "31"
+      Name		      "height"
+      SID		      "54"
       Ports		      [1]
-      Position		      [935, 549, 965, 581]
+      Position		      [1015, 564, 1045, 596]
       Floating		      off
       Location		      [3, 50, 719, 868]
       Open		      on
@@ -1143,16 +1331,12 @@ Model {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
+      TimeRange		      "500"
+      YMin		      "-1.70530256582424e-16"
+      YMax		      "40"
       SaveName		      "ScopeData2"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "h0 [km]"
-      SID		      "4"
-      Position		      [35, 56, 105, 84]
-      Value		      "39.045"
     }
     Block {
       BlockType		      Constant
@@ -1166,40 +1350,28 @@ Model {
       Name		      "p(h) [kg/m³]"
       SID		      "30"
       Ports		      [1]
-      Position		      [440, 549, 470, 581]
+      Position		      [440, 644, 470, 676]
       Floating		      off
-      Location		      [2321, 311, 3033, 979]
-      Open		      off
+      Location		      [2279, 574, 3115, 1044]
+      Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
+      TimeRange		      "500"
+      YMin		      "0"
+      YMax		      "1.4"
       SaveName		      "ScopeData1"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
     Block {
-      BlockType		      Constant
-      Name		      "utcSeconds"
-      SID		      "8"
-      Position		      [35, 430, 90, 460]
-      Value		      "65280"
-    }
-    Block {
-      BlockType		      Integrator
-      Name		      "v"
-      SID		      "15"
-      Ports		      [2, 1]
-      Position		      [710, 378, 750, 447]
-      InitialConditionSource  "external"
-    }
-    Block {
       BlockType		      Scope
-      Name		      "v [m/s]"
-      SID		      "32"
+      Name		      "speed"
+      SID		      "55"
       Ports		      [1]
-      Position		      [935, 604, 965, 636]
+      Position		      [1015, 629, 1045, 661]
       Floating		      off
       Location		      [726, 54, 1436, 430]
       Open		      on
@@ -1208,9 +1380,33 @@ Model {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
+      TimeRange		      "500"
+      YMin		      "-0"
+      YMax		      "1400"
       SaveName		      "ScopeData3"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "utcSeconds"
+      SID		      "8"
+      Position		      [40, 640, 95, 670]
+      Value		      "65280"
+    }
+    Block {
+      BlockType		      Integrator
+      Name		      "v"
+      SID		      "15"
+      Ports		      [2, 1]
+      Position		      [730, 403, 770, 472]
+      InitialConditionSource  "external"
+      Port {
+	PortNumber		1
+	Name			"v"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Constant
@@ -1223,87 +1419,99 @@ Model {
       BlockType		      Constant
       Name		      "year"
       SID		      "6"
-      Position		      [35, 335, 65, 365]
+      Position		      [40, 545, 70, 575]
       Value		      "2012"
     }
     Line {
       SrcBlock		      "Latitude"
       SrcPort		      1
-      Points		      [45, 0; 0, 45]
+      Points		      [45, 0; 0, 70]
       DstBlock		      "Mux"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Longitude"
       SrcPort		      1
+      Points		      [30, 0; 0, 25]
       DstBlock		      "Mux"
       DstPort		      2
     }
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-      Points		      [10, 0]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      1
     }
     Line {
       SrcBlock		      "year"
       SrcPort		      1
+      Points		      [55, 0; 0, 10]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      2
     }
     Line {
       SrcBlock		      "dayOfYear"
       SrcPort		      1
-      Points		      [120, 0; 0, -15]
+      Points		      [50, 0; 0, -5]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      3
     }
     Line {
       SrcBlock		      "utcSeconds"
       SrcPort		      1
-      Points		      [105, 0]
+      Points		      [35, 0; 0, -25]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      4
     }
     Line {
+      Name		      "h"
+      Labels		      [0, 0]
       SrcBlock		      "h"
       SrcPort		      1
-      Points		      [40, 0]
+      Points		      [35, 0]
       Branch {
-	Points			[140, 0; 0, -130; -605, 0]
+	Points			[0, -70]
 	Branch {
-	  Points		  [-300, 0; 0, 35]
-	  DstBlock		  "Mux"
-	  DstPort		  3
+	  DstBlock		  "Compare\nTo Zero"
+	  DstPort		  1
 	}
 	Branch {
-	  Points		  [0, 125]
-	  DstBlock		  "MATLAB Function"
-	  DstPort		  2
+	  Points		  [-400, 0; 0, 25]
+	  Branch {
+	    DstBlock		    "MATLAB Function"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [-265, 0]
+	    Branch {
+	      Points		      [-130, 0]
+	      DstBlock		      "Mux"
+	      DstPort		      3
+	    }
+	    Branch {
+	      Points		      [0, -50]
+	      DstBlock		      "Deploy parachute?"
+	      DstPort		      2
+	    }
+	  }
 	}
       }
       Branch {
-	Points			[0, 155]
-	DstBlock		"h [m]"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -65]
-	DstBlock		"Compare\nTo Zero"
+	Points			[0, 100; -90, 0; 0, 40]
+	DstBlock		"-> [km]"
 	DstPort			1
       }
     }
     Line {
       SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
       SrcPort		      2
-      Points		      [10, 0]
       DstBlock		      "Demux1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
       SrcPort		      1
+      Points		      [20, 0]
       DstBlock		      "Demux"
       DstPort		      1
     }
@@ -1316,48 +1524,51 @@ Model {
     Line {
       SrcBlock		      "h0 [km]"
       SrcPort		      1
-      DstBlock		      "->[m]"
+      DstBlock		      "-> [m]"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Demux"
       SrcPort		      2
-      Points		      [20, 0; 0, 275]
+      Points		      [30, 0; 0, 165]
       DstBlock		      "T(h) [K]"
       DstPort		      1
     }
     Line {
       SrcBlock		      "mS [kg]"
       SrcPort		      1
-      Points		      [360, 0; 0, 265]
+      Points		      [360, 0; 0, 295]
       DstBlock		      "MATLAB Function"
       DstPort		      1
     }
     Line {
+      Name		      "a"
+      Labels		      [0, 0]
       SrcBlock		      "MATLAB Function"
       SrcPort		      1
-      Points		      [25, 0]
+      Points		      [0, -5; 25, 0]
       Branch {
-	Points			[0, -20]
+	Points			[0, -25]
 	DstBlock		"v"
 	DstPort			1
       }
       Branch {
-	Points			[0, 260]
-	DstBlock		"a [m/s²]"
+	Points			[0, 255]
+	DstBlock		"acceleration"
 	DstPort			1
       }
     }
     Line {
       SrcBlock		      "Demux1"
       SrcPort		      6
-      Points		      [30, 0]
+      Points		      [40, 0]
       Branch {
+	Points			[0, -190]
 	DstBlock		"MATLAB Function"
 	DstPort			3
       }
       Branch {
-	Points			[0, 135]
+	Points			[0, 30]
 	DstBlock		"p(h) [kg/m³]"
 	DstPort			1
       }
@@ -1365,18 +1576,19 @@ Model {
     Line {
       SrcBlock		      "-> [m/s]"
       SrcPort		      1
-      Points		      [460, 0]
+      Points		      [480, 0]
       DstBlock		      "v"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "->[m]"
+      SrcBlock		      "-> [m]"
       SrcPort		      1
-      Points		      [535, 0; 0, 360]
+      Points		      [555, 0; 0, 385]
       DstBlock		      "h"
       DstPort		      2
     }
     Line {
+      Name		      "v"
       SrcBlock		      "v"
       SrcPort		      1
       Points		      [50, 0]
@@ -1388,13 +1600,14 @@ Model {
       Branch {
 	Points			[0, 205]
 	Branch {
-	  DstBlock		  "v [m/s]"
-	  DstPort		  1
-	}
-	Branch {
 	  Points		  [-295, 0]
 	  DstBlock		  "MATLAB Function"
 	  DstPort		  4
+	}
+	Branch {
+	  Labels		  [1, 0]
+	  DstBlock		  "-> [km/h]"
+	  DstPort		  1
 	}
       }
     }
@@ -1402,6 +1615,88 @@ Model {
       SrcBlock		      "Compare\nTo Zero"
       SrcPort		      1
       DstBlock		      "Stop Simulation"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "cw Jumper"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Mux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "A Jumper"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Mux1"
+      DstPort		      2
+    }
+    Line {
+      Name		      "cw, A"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      Points		      [55, 0; 0, 75]
+      DstBlock		      "Deploy parachute?"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "cw Parachute"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Mux2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "A Parachute"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Mux2"
+      DstPort		      2
+    }
+    Line {
+      Name		      "cw, A"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux2"
+      SrcPort		      1
+      DstBlock		      "Deploy parachute?"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      1
+      DstBlock		      "MATLAB Function"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      2
+      DstBlock		      "MATLAB Function"
+      DstPort		      6
+    }
+    Line {
+      Name		      "cw, A"
+      Labels		      [0, 0]
+      SrcBlock		      "Deploy parachute?"
+      SrcPort		      1
+      Points		      [35, 0]
+      DstBlock		      "Demux2"
+      DstPort		      1
+    }
+    Line {
+      Name		      "v [km/h]"
+      Labels		      [0, 0]
+      SrcBlock		      "-> [km/h]"
+      SrcPort		      1
+      DstBlock		      "speed"
+      DstPort		      1
+    }
+    Line {
+      Name		      "h [km]"
+      Labels		      [0, 0]
+      SrcBlock		      "-> [km]"
+      SrcPort		      1
+      DstBlock		      "height"
       DstPort		      1
     }
   }
@@ -1419,9 +1714,7 @@ Stateflow {
     name		    "Sprung"
     created		    "28-Dec-2012 18:56:06"
     isLibrary		    0
-    firstTarget		    12
-    debug {
-    }
+    firstTarget		    14
     sfVersion		    75014001
   }
   chart {
@@ -1435,9 +1728,7 @@ Stateflow {
     firstJunction	    4
     viewObj		    2
     machine		    1
-    subviewS {
-    }
-    ssIdHighWaterMark	    8
+    ssIdHighWaterMark	    10
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    6
@@ -1461,9 +1752,9 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function a = beschleunigung(mS, h, p, v)\n%#codegen\n\n% Erdmasse [kg]\nmE=5.9736*10^24;\n% Erdra"
-      "dius (Äquator) [m]\nrE=6378137;\n\n% Springer cW*A\ncwA=1.07;\n\n% Gravitationskonstante [m³/(kg*s²)]\nG=66.7"
-      "384*10^-12;\n\na=(-G*(mS*mE)/(rE+h)^2 + 0.5*p*v^2*cwA)/mS;"
+      script		      "function a = beschleunigung(mS, h, p, v, cw, A)\n%#codegen\n\n% Erdmasse [kg]\nmE=5.9736*10^24;\n"
+      "% Erdradius (Äquator) [m]\nrE=6378137;\n\n% Widerstandsfläche\ncwA = cw*A;\n\n% Gravitationskonstante [m³/(kg"
+      "*s²)]\nG=66.7384*10^-12;\n\na=(-G*(mS*mE)/(rE+h)^2 + 0.5*p*v^2*cwA)/mS;"
       editorLayout	      "100 M4x1[1481 156 1080 733]"
     }
   }
@@ -1584,7 +1875,51 @@ Stateflow {
     id			    10
     ssIdNumber		    8
     name		    "v"
-    linkNode		    [2 9 0]
+    linkNode		    [2 9 11]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    11
+    ssIdNumber		    9
+    name		    "cw"
+    linkNode		    [2 10 12]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    12
+    ssIdNumber		    10
+    name		    "A"
+    linkNode		    [2 11 0]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1603,13 +1938,13 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    11
+    id			    13
     name		    "MATLAB Function"
     machine		    1
     chart		    2
   }
   target {
-    id			    12
+    id			    14
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
