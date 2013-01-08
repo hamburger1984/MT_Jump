@@ -63,13 +63,16 @@ Die Dichte der Atmosphäre ist höhenabhängig.
 Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
 Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
 
-\paragraph{Dichte}
+\paragraph{Dichte und Temperatur}
 Mit steigender Höhe nimmt die Dichte ab, da die darüberliegendes Gassäule kürzer wird.
-Mit der barometrischen Höhenformel lässt sich der Druck in abhängigkeit von der Höhe beschreiben.
+Auch die Temperatur ist höhenabhängig.
+Zunächste ist die Temperatur der Erdoberfläche der ausschlaggebende Faktor.
+Mit zunehmender Höhe nimmt dieser Einfluss ab und die Temperatur sinkt.
+Darüber nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Einstrahlung von darüberliegenden Atmosphärenschichten gefiltert wird.
 
+Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet.
+Es liefert für die Parameter Datum, Uhrzeit, geographische Position und eine Höhe von 0 bis 100km Werte für Dichte und Temperatur.
 
-
-\paragraph{Temperatur}
 
 \paragraph{Schallgeschwindigkeit}
 
