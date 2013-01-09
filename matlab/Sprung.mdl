@@ -1,12 +1,12 @@
 Model {
-  Name			  "Sprung"
+  Name			  "Sprung_C"
   Version		  7.7
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.38"
+    ComputedModelVersion    "1.92"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jan  8 19:16:27 2013"
-  RTWModifiedTimeStamp	  279571259
-  ModelVersionFormat	  "1.%<AutoIncrement:38>"
+  LastModifiedDate	  "Wed Jan  9 11:33:24 2013"
+  RTWModifiedTimeStamp	  279624006
+  ModelVersionFormat	  "1.%<AutoIncrement:92>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -65,7 +65,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "Sprung"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -73,7 +72,6 @@ Model {
       Cell		      "Sprung"
       PropName		      "logAsSpecifiedByModels_"
     }
-    logAsSpecifiedByModelsSSIDs_ []
   }
   RecordCoverage	  off
   CovPath		  "/"
@@ -126,7 +124,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.11.0"
 	  StartTime		  "0.0"
-	  StopTime		  "9999"
+	  StopTime		  "750"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -137,7 +135,7 @@ Model {
 	  MaxConsecutiveZCs	  "1000"
 	  ExtrapolationOrder	  4
 	  NumberNewtonIterations  1
-	  MaxStep		  "auto"
+	  MaxStep		  "1"
 	  MinStep		  "auto"
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
@@ -601,7 +599,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 1440, 120, 2523, 1047 ] 
+      ConfigPrmDlgPosition     [ 1842, 123, 2806, 923 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -802,8 +800,8 @@ Model {
     }
   }
   System {
-    Name		    "Sprung"
-    Location		    [1556, 174, 2647, 1046]
+    Name		    "Sprung_C"
+    Location		    [1521, 152, 2612, 1024]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -817,12 +815,12 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "56"
+    SIDHighWatermark	    "65"
     Block {
       BlockType		      Gain
       Name		      "-> [km/h]"
       SID		      "49"
-      Position		      [850, 624, 940, 666]
+      Position		      [830, 579, 920, 621]
       Gain		      "-3600/1000"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -838,7 +836,7 @@ Model {
       BlockType		      Gain
       Name		      "-> [km]"
       SID		      "52"
-      Position		      [870, 559, 925, 601]
+      Position		      [865, 519, 920, 561]
       Gain		      "1/1000"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -854,7 +852,7 @@ Model {
       BlockType		      Gain
       Name		      "-> [m/s]"
       SID		      "21"
-      Position		      [150, 138, 230, 192]
+      Position		      [600, 288, 680, 342]
       Gain		      "1000/3600"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -864,7 +862,7 @@ Model {
       BlockType		      Gain
       Name		      "-> [m]"
       SID		      "22"
-      Position		      [150, 42, 230, 98]
+      Position		      [715, 291, 785, 339]
       Gain		      "1000"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -875,6 +873,7 @@ Model {
       Name		      "A Jumper"
       SID		      "39"
       Position		      [55, 265, 85, 295]
+      Value		      "0.4"
     }
     Block {
       BlockType		      Constant
@@ -910,7 +909,7 @@ Model {
       Name		      "Demux"
       SID		      "27"
       Ports		      [1, 2]
-      Position		      [350, 521, 355, 559]
+      Position		      [345, 421, 350, 459]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
@@ -920,7 +919,7 @@ Model {
       Name		      "Demux1"
       SID		      "28"
       Ports		      [1, 9]
-      Position		      [350, 570, 355, 670]
+      Position		      [345, 475, 350, 575]
       ShowName		      off
       Outputs		      "9"
       DisplayOption	      "bar"
@@ -930,7 +929,7 @@ Model {
       Name		      "Demux2"
       SID		      "47"
       Ports		      [1, 2]
-      Position		      [455, 463, 460, 492]
+      Position		      [465, 463, 470, 492]
       ShowName		      off
       Outputs		      "2"
       DisplayOption	      "bar"
@@ -939,7 +938,7 @@ Model {
       BlockType		      Switch
       Name		      "Deploy parachute?"
       SID		      "40"
-      Position		      [305, 325, 400, 365]
+      Position		      [305, 295, 400, 335]
       Criteria		      "u2 > Threshold"
       Threshold		      "1500"
       InputSameDT	      off
@@ -955,14 +954,14 @@ Model {
       BlockType		      Constant
       Name		      "Latitude"
       SID		      "11"
-      Position		      [40, 445, 70, 475]
+      Position		      [55, 430, 85, 460]
       Value		      "33"
     }
     Block {
       BlockType		      Constant
       Name		      "Longitude"
       SID		      "12"
-      Position		      [40, 500, 70, 530]
+      Position		      [55, 480, 85, 510]
       Value		      "104"
     }
     Block {
@@ -970,7 +969,7 @@ Model {
       Name		      "MATLAB Function"
       SID		      "25"
       Ports		      [6, 1]
-      Position		      [545, 396, 655, 499]
+      Position		      [550, 395, 660, 500]
       LibraryVersion	      "1.32"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1014,7 +1013,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"22"
+	SIDHighWatermark	"23"
 	Block {
 	  BlockType		  Inport
 	  Name			  "mS"
@@ -1067,16 +1066,16 @@ Model {
 	  Name			  " Demux "
 	  SID			  "25::15"
 	  Ports			  [1, 1]
-	  Position		  [270, 245, 320, 285]
+	  Position		  [270, 270, 320, 310]
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "25::14"
-	  Tag			  "Stateflow S-Function Sprung 2"
+	  Tag			  "Stateflow S-Function Sprung_C 2"
 	  Ports			  [6, 2]
-	  Position		  [180, 102, 230, 243]
+	  Position		  [180, 106, 230, 269]
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[6 2]"
 	  EnableBusSupport	  on
@@ -1091,7 +1090,7 @@ Model {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
 	  SID			  "25::17"
-	  Position		  [460, 256, 480, 274]
+	  Position		  [460, 281, 480, 299]
 	}
 	Block {
 	  BlockType		  Outport
@@ -1163,7 +1162,7 @@ Model {
       Name		      "Mux"
       SID		      "26"
       Ports		      [3, 1]
-      Position		      [150, 521, 155, 559]
+      Position		      [155, 406, 160, 444]
       ShowName		      off
       Inputs		      "3"
       DisplayOption	      "bar"
@@ -1190,7 +1189,7 @@ Model {
       Name		      "Mux2"
       SID		      "45"
       Ports		      [2, 1]
-      Position		      [125, 341, 130, 379]
+      Position		      [125, 326, 130, 364]
       ShowName		      off
       Inputs		      "2"
       DisplayOption	      "bar"
@@ -1207,7 +1206,7 @@ Model {
       Name		      "NRLMSISE-00\nAtmosphere Model"
       SID		      "3"
       Ports		      [4, 2]
-      Position		      [190, 520, 310, 650]
+      Position		      [190, 405, 310, 535]
       LibraryVersion	      "1.155"
       SourceBlock	      "aerolibatmos2/NRLMSISE-00\nAtmosphere Model"
       SourceType	      "NRLMSISE-00 Model"
@@ -1236,41 +1235,21 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "T(h) [K]"
-      SID		      "29"
-      Ports		      [1]
-      Position		      [440, 699, 470, 731]
-      Floating		      off
-      Location		      [2285, 54, 3115, 519]
-      Open		      on
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      TimeRange		      "500"
-      YMin		      "200"
-      YMax		      "300"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
       Name		      "acceleration"
       SID		      "56"
       Ports		      [1]
-      Position		      [1015, 684, 1045, 716]
+      Position		      [1015, 639, 1045, 671]
       Floating		      off
-      Location		      [726, 490, 1436, 867]
+      Location		      [1, 47, 1441, 872]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "500"
-      YMin		      "-50"
-      YMax		      "300"
+      TimeRange		      "600"
+      YMin		      "-500"
+      YMax		      "2000"
       SaveName		      "ScopeData4"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
@@ -1280,20 +1259,20 @@ Model {
       Name		      "cw Jumper"
       SID		      "38"
       Position		      [55, 215, 85, 245]
-      Value		      "1.07"
+      Value		      "1.3"
     }
     Block {
       BlockType		      Constant
       Name		      "cw Parachute"
       SID		      "46"
       Position		      [55, 320, 85, 350]
-      Value		      "1.33"
+      Value		      "4"
     }
     Block {
       BlockType		      Constant
       Name		      "dayOfYear"
       SID		      "7"
-      Position		      [40, 590, 70, 620]
+      Position		      [55, 585, 85, 615]
       Value		      "288"
     }
     Block {
@@ -1314,7 +1293,7 @@ Model {
       BlockType		      Constant
       Name		      "h0 [km]"
       SID		      "4"
-      Position		      [35, 56, 105, 84]
+      Position		      [595, 216, 665, 244]
       Value		      "39.045"
     }
     Block {
@@ -1322,19 +1301,40 @@ Model {
       Name		      "height"
       SID		      "54"
       Ports		      [1]
-      Position		      [1015, 564, 1045, 596]
+      Position		      [1015, 524, 1045, 556]
       Floating		      off
-      Location		      [3, 50, 719, 868]
+      Location		      [4, 51, 1438, 871]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "500"
-      YMin		      "-1.70530256582424e-16"
+      TimeRange		      "600"
+      YMin		      "-1.640465541186131e-15"
       YMax		      "40"
       SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "height [m]"
+      SID		      "60"
+      Ports		      [1]
+      Position		      [1015, 269, 1045, 301]
+      Floating		      off
+      Location		      [2283, 575, 3119, 1045]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "600"
+      YMin		      "-1.640465541186131e-12"
+      YMax		      "40000"
+      SaveName		      "ScopeData6"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -1342,56 +1342,104 @@ Model {
       BlockType		      Constant
       Name		      "mS [kg]"
       SID		      "13"
-      Position		      [35, 100, 105, 130]
+      Position		      [425, 215, 495, 245]
       Value		      "140"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "p(h) [kg/m³]"
-      SID		      "30"
-      Ports		      [1]
-      Position		      [440, 644, 470, 676]
-      Floating		      off
-      Location		      [2279, 574, 3115, 1044]
-      Open		      on
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      TimeRange		      "500"
-      YMin		      "0"
-      YMax		      "1.4"
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
     }
     Block {
       BlockType		      Scope
       Name		      "speed"
       SID		      "55"
       Ports		      [1]
-      Position		      [1015, 629, 1045, 661]
+      Position		      [1015, 584, 1045, 616]
       Floating		      off
-      Location		      [726, 54, 1436, 430]
+      Location		      [1, 47, 1441, 872]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "500"
+      TimeRange		      "600"
       YMin		      "-0"
-      YMax		      "1400"
+      YMax		      "1500"
       SaveName		      "ScopeData3"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
     Block {
+      BlockType		      Reference
+      Name		      "speed (h)"
+      SID		      "64"
+      Ports		      [2]
+      Position		      [1015, 775, 1045, 810]
+      LibraryVersion	      "1.236"
+      SourceBlock	      "simulink/Sinks/XY Graph"
+      SourceType	      "XY scope."
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      GeneratePreprocessorConditionals off
+      xmin		      "0"
+      xmax		      "1500"
+      ymin		      "0"
+      ymax		      "40"
+      st		      "-1"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "speed [m/s]"
+      SID		      "59"
+      Ports		      [1]
+      Position		      [1015, 214, 1045, 246]
+      Floating		      off
+      Location		      [1446, 579, 2276, 1044]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      TimeRange		      "600"
+      YMin		      "-500"
+      YMax		      "0"
+      SaveName		      "ScopeData5"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "temperature (h)"
+      SID		      "63"
+      Ports		      [2]
+      Position		      [1015, 705, 1045, 740]
+      LibraryVersion	      "1.236"
+      SourceBlock	      "simulink/Sinks/XY Graph"
+      SourceType	      "XY scope."
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      GeneratePreprocessorConditionals off
+      xmin		      "200"
+      xmax		      "300"
+      ymin		      "0"
+      ymax		      "40"
+      st		      "-1"
+    }
+    Block {
       BlockType		      Constant
       Name		      "utcSeconds"
       SID		      "8"
-      Position		      [40, 640, 95, 670]
+      Position		      [40, 635, 95, 665]
       Value		      "65280"
     }
     Block {
@@ -1412,27 +1460,27 @@ Model {
       BlockType		      Constant
       Name		      "v0 [km/h]"
       SID		      "5"
-      Position		      [35, 151, 105, 179]
+      Position		      [510, 216, 580, 244]
       Value		      "0"
     }
     Block {
       BlockType		      Constant
       Name		      "year"
       SID		      "6"
-      Position		      [40, 545, 70, 575]
+      Position		      [55, 535, 85, 565]
       Value		      "2012"
     }
     Line {
       SrcBlock		      "Latitude"
       SrcPort		      1
-      Points		      [45, 0; 0, 70]
+      Points		      [20, 0; 0, -30]
       DstBlock		      "Mux"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Longitude"
       SrcPort		      1
-      Points		      [30, 0; 0, 25]
+      Points		      [30, 0; 0, -70]
       DstBlock		      "Mux"
       DstPort		      2
     }
@@ -1445,21 +1493,21 @@ Model {
     Line {
       SrcBlock		      "year"
       SrcPort		      1
-      Points		      [55, 0; 0, 10]
+      Points		      [50, 0; 0, -95]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      2
     }
     Line {
       SrcBlock		      "dayOfYear"
       SrcPort		      1
-      Points		      [50, 0; 0, -5]
+      Points		      [60, 0; 0, -115]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      3
     }
     Line {
       SrcBlock		      "utcSeconds"
       SrcPort		      1
-      Points		      [35, 0; 0, -25]
+      Points		      [65, 0; 0, -135]
       DstBlock		      "NRLMSISE-00\nAtmosphere Model"
       DstPort		      4
     }
@@ -1470,34 +1518,44 @@ Model {
       SrcPort		      1
       Points		      [35, 0]
       Branch {
-	Points			[0, -70]
+	Points			[0, -55]
 	Branch {
+	  Points		  [0, -15]
 	  DstBlock		  "Compare\nTo Zero"
 	  DstPort		  1
 	}
 	Branch {
-	  Points		  [-400, 0; 0, 25]
+	  Points		  [-45, 0]
 	  Branch {
-	    DstBlock		    "MATLAB Function"
-	    DstPort		    2
-	  }
-	  Branch {
-	    Points		    [-265, 0]
+	    Points		    [-365, 0]
 	    Branch {
-	      Points		      [-130, 0]
-	      DstBlock		      "Mux"
-	      DstPort		      3
-	    }
-	    Branch {
-	      Points		      [0, -50]
-	      DstBlock		      "Deploy parachute?"
+	      Points		      [0, 40]
+	      DstBlock		      "MATLAB Function"
 	      DstPort		      2
 	    }
+	    Branch {
+	      Points		      [-255, 0]
+	      Branch {
+		Points			[0, -70]
+		DstBlock		"Deploy parachute?"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[-135, 0; 0, 50]
+		DstBlock		"Mux"
+		DstPort			3
+	      }
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -100]
+	    DstBlock		    "height [m]"
+	    DstPort		    1
 	  }
 	}
       }
       Branch {
-	Points			[0, 100; -90, 0; 0, 40]
+	Points			[0, 65; -95, 0; 0, 35]
 	DstBlock		"-> [km]"
 	DstPort			1
       }
@@ -1505,13 +1563,13 @@ Model {
     Line {
       SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
       SrcPort		      2
+      Points		      [15, 0]
       DstBlock		      "Demux1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "NRLMSISE-00\nAtmosphere Model"
       SrcPort		      1
-      Points		      [20, 0]
       DstBlock		      "Demux"
       DstPort		      1
     }
@@ -1524,20 +1582,21 @@ Model {
     Line {
       SrcBlock		      "h0 [km]"
       SrcPort		      1
+      Points		      [30, 0]
       DstBlock		      "-> [m]"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Demux"
       SrcPort		      2
-      Points		      [30, 0; 0, 165]
-      DstBlock		      "T(h) [K]"
+      Points		      [30, 0; 0, 265]
+      DstBlock		      "temperature (h)"
       DstPort		      1
     }
     Line {
       SrcBlock		      "mS [kg]"
       SrcPort		      1
-      Points		      [360, 0; 0, 295]
+      Points		      [0, 180]
       DstBlock		      "MATLAB Function"
       DstPort		      1
     }
@@ -1546,14 +1605,14 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "MATLAB Function"
       SrcPort		      1
-      Points		      [0, -5; 25, 0]
+      Points		      [35, 0]
       Branch {
-	Points			[0, -25]
+	Points			[0, -30]
 	DstBlock		"v"
 	DstPort			1
       }
       Branch {
-	Points			[0, 255]
+	Points			[0, 205]
 	DstBlock		"acceleration"
 	DstPort			1
       }
@@ -1561,29 +1620,21 @@ Model {
     Line {
       SrcBlock		      "Demux1"
       SrcPort		      6
-      Points		      [40, 0]
-      Branch {
-	Points			[0, -190]
-	DstBlock		"MATLAB Function"
-	DstPort			3
-      }
-      Branch {
-	Points			[0, 30]
-	DstBlock		"p(h) [kg/m³]"
-	DstPort			1
-      }
+      Points		      [45, 0; 0, -95]
+      DstBlock		      "MATLAB Function"
+      DstPort		      3
     }
     Line {
       SrcBlock		      "-> [m/s]"
       SrcPort		      1
-      Points		      [480, 0]
+      Points		      [0, 140]
       DstBlock		      "v"
       DstPort		      2
     }
     Line {
       SrcBlock		      "-> [m]"
       SrcPort		      1
-      Points		      [555, 0; 0, 385]
+      Points		      [0, 140]
       DstBlock		      "h"
       DstPort		      2
     }
@@ -1591,22 +1642,30 @@ Model {
       Name		      "v"
       SrcBlock		      "v"
       SrcPort		      1
-      Points		      [50, 0]
+      Points		      [30, 0]
       Branch {
-	Points			[0, -20]
-	DstBlock		"h"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 205]
+	Points			[0, 85; -80, 0]
 	Branch {
-	  Points		  [-295, 0]
+	  Points		  [-205, 0; 0, -70]
 	  DstBlock		  "MATLAB Function"
 	  DstPort		  4
 	}
 	Branch {
 	  Labels		  [1, 0]
+	  Points		  [0, 75]
 	  DstBlock		  "-> [km/h]"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	Points			[0, -20]
+	Branch {
+	  DstBlock		  "h"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -190]
+	  DstBlock		  "speed [m/s]"
 	  DstPort		  1
 	}
       }
@@ -1636,14 +1695,13 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [55, 0; 0, 75]
+      Points		      [55, 0; 0, 45]
       DstBlock		      "Deploy parachute?"
       DstPort		      1
     }
     Line {
       SrcBlock		      "cw Parachute"
       SrcPort		      1
-      Points		      [20, 0]
       DstBlock		      "Mux2"
       DstPort		      1
     }
@@ -1659,6 +1717,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Mux2"
       SrcPort		      1
+      Points		      [155, 0]
       DstBlock		      "Deploy parachute?"
       DstPort		      3
     }
@@ -1679,7 +1738,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Deploy parachute?"
       SrcPort		      1
-      Points		      [35, 0]
+      Points		      [45, 0]
       DstBlock		      "Demux2"
       DstPort		      1
     }
@@ -1688,16 +1747,39 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "-> [km/h]"
       SrcPort		      1
-      DstBlock		      "speed"
-      DstPort		      1
+      Points		      [55, 0]
+      Branch {
+	DstBlock		"speed"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 185]
+	DstBlock		"speed (h)"
+	DstPort			1
+      }
     }
     Line {
       Name		      "h [km]"
       Labels		      [0, 0]
       SrcBlock		      "-> [km]"
       SrcPort		      1
-      DstBlock		      "height"
-      DstPort		      1
+      Points		      [45, 0]
+      Branch {
+	DstBlock		"height"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 190]
+	Branch {
+	  DstBlock		  "temperature (h)"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, 70]
+	  DstBlock		  "speed (h)"
+	  DstPort		  2
+	}
+      }
     }
   }
 }
@@ -1711,10 +1793,12 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "Sprung"
+    name		    "Sprung_C"
     created		    "28-Dec-2012 18:56:06"
     isLibrary		    0
     firstTarget		    14
+    debug {
+    }
     sfVersion		    75014001
   }
   chart {
@@ -1728,7 +1812,7 @@ Stateflow {
     firstJunction	    4
     viewObj		    2
     machine		    1
-    ssIdHighWaterMark	    10
+    ssIdHighWaterMark	    11
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    6
@@ -1754,7 +1838,7 @@ Stateflow {
       isEML		      1
       script		      "function a = beschleunigung(mS, h, p, v, cw, A)\n%#codegen\n\n% Erdmasse [kg]\nmE=5.9736*10^24;\n"
       "% Erdradius (Äquator) [m]\nrE=6378137;\n\n% Widerstandsfläche\ncwA = cw*A;\n\n% Gravitationskonstante [m³/(kg"
-      "*s²)]\nG=66.7384*10^-12;\n\na=(-G*(mS*mE)/(rE+h)^2 + 0.5*p*v^2*cwA)/mS;"
+      "*s²)]\nG=66.7384*10^-12;\n\na=(p/2*v^2*cwA - (G*(mS*mE)/(rE+h)^2))/mS;"
       editorLayout	      "100 M4x1[1481 156 1080 733]"
     }
   }
