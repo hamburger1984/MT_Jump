@@ -1,12 +1,12 @@
 Model {
-  Name			  "Sprung_C"
+  Name			  "Sprung"
   Version		  7.7
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.92"
+    ComputedModelVersion    "1.98"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jan  9 11:33:24 2013"
-  RTWModifiedTimeStamp	  279624006
-  ModelVersionFormat	  "1.%<AutoIncrement:92>"
+  LastModifiedDate	  "Wed Jan  9 11:56:20 2013"
+  RTWModifiedTimeStamp	  279632427
+  ModelVersionFormat	  "1.%<AutoIncrement:98>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -65,6 +65,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "Sprung"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -72,6 +73,7 @@ Model {
       Cell		      "Sprung"
       PropName		      "logAsSpecifiedByModels_"
     }
+    logAsSpecifiedByModelsSSIDs_ []
   }
   RecordCoverage	  off
   CovPath		  "/"
@@ -599,7 +601,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 1842, 123, 2806, 923 ] 
+      ConfigPrmDlgPosition     [ 1840, 102, 2808, 927 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -800,8 +802,8 @@ Model {
     }
   }
   System {
-    Name		    "Sprung_C"
-    Location		    [1521, 152, 2612, 1024]
+    Name		    "Sprung"
+    Location		    [1511, 70, 2602, 942]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1073,7 +1075,7 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "25::14"
-	  Tag			  "Stateflow S-Function Sprung_C 2"
+	  Tag			  "Stateflow S-Function Sprung 2"
 	  Ports			  [6, 2]
 	  Position		  [180, 106, 230, 269]
 	  FunctionName		  "sf_sfun"
@@ -1240,7 +1242,7 @@ Model {
       Ports		      [1]
       Position		      [1015, 639, 1045, 671]
       Floating		      off
-      Location		      [1, 47, 1441, 872]
+      Location		      [6, 50, 1442, 868]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1248,8 +1250,8 @@ Model {
 	axes1			"%<SignalLabel>"
       }
       TimeRange		      "600"
-      YMin		      "-500"
-      YMax		      "2000"
+      YMin		      "-200"
+      YMax		      "1800"
       SaveName		      "ScopeData4"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
@@ -1303,7 +1305,7 @@ Model {
       Ports		      [1]
       Position		      [1015, 524, 1045, 556]
       Floating		      off
-      Location		      [4, 51, 1438, 871]
+      Location		      [6, 51, 1440, 871]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1324,7 +1326,7 @@ Model {
       Ports		      [1]
       Position		      [1015, 269, 1045, 301]
       Floating		      off
-      Location		      [2283, 575, 3119, 1045]
+      Location		      [2279, 574, 3115, 1044]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1350,16 +1352,16 @@ Model {
       Name		      "speed"
       SID		      "55"
       Ports		      [1]
-      Position		      [1015, 584, 1045, 616]
+      Position		      [1015, 588, 1045, 622]
       Floating		      off
-      Location		      [1, 47, 1441, 872]
+      Location		      [4, 51, 1438, 871]
       Open		      on
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "600"
+      TimeRange		      "250"
       YMin		      "-0"
       YMax		      "1500"
       SaveName		      "ScopeData3"
@@ -1375,7 +1377,7 @@ Model {
       LibraryVersion	      "1.236"
       SourceBlock	      "simulink/Sinks/XY Graph"
       SourceType	      "XY scope."
-      ShowPortLabels	      "FromPortIcon"
+      ShowPortLabels	      "SignalName"
       SystemSampleTime	      "-1"
       FunctionWithSeparateData off
       RTWMemSecFuncInitTerm   "Inherit from model"
@@ -1749,6 +1751,7 @@ Model {
       SrcPort		      1
       Points		      [55, 0]
       Branch {
+	Points			[20, 0]
 	DstBlock		"speed"
 	DstPort			1
       }
@@ -1793,12 +1796,10 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "Sprung_C"
+    name		    "Sprung"
     created		    "28-Dec-2012 18:56:06"
     isLibrary		    0
     firstTarget		    14
-    debug {
-    }
     sfVersion		    75014001
   }
   chart {
