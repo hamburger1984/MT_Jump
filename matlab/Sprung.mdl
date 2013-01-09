@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.98"
+    ComputedModelVersion    "1.99"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jan  9 11:56:20 2013"
+  LastModifiedDate	  "Wed Jan  9 11:57:40 2013"
   RTWModifiedTimeStamp	  279632427
-  ModelVersionFormat	  "1.%<AutoIncrement:98>"
+  ModelVersionFormat	  "1.%<AutoIncrement:99>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1327,7 +1327,7 @@ Model {
       Position		      [1015, 269, 1045, 301]
       Floating		      off
       Location		      [2279, 574, 3115, 1044]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1361,7 +1361,7 @@ Model {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      TimeRange		      "250"
+      TimeRange		      "600"
       YMin		      "-0"
       YMax		      "1500"
       SaveName		      "ScopeData3"
@@ -1400,14 +1400,14 @@ Model {
       Position		      [1015, 214, 1045, 246]
       Floating		      off
       Location		      [1446, 579, 2276, 1044]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
       TimeRange		      "600"
-      YMin		      "-500"
+      YMin		      "-450"
       YMax		      "0"
       SaveName		      "ScopeData5"
       DataFormat	      "StructureWithTime"
