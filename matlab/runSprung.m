@@ -1,24 +1,25 @@
 %load_system('SprungModule');
 
 set_param('SprungModule/h0', 'value', '24000'); sim('SprungModule');
-velocity24000=velocity; height24000=height;
+velocity24000=velocity; height24000=height; acceleration24000=acceleration;
 set_param('SprungModule/h0', 'value', '26000'); sim('SprungModule');
-velocity26000=velocity; height26000=height;
+velocity26000=velocity; height26000=height; acceleration26000=acceleration;
 set_param('SprungModule/h0', 'value', '28000'); sim('SprungModule');
-velocity28000=velocity; height28000=height;
+velocity28000=velocity; height28000=height; acceleration28000=acceleration;
 set_param('SprungModule/h0', 'value', '30000'); sim('SprungModule');
-velocity30000=velocity; height30000=height;
+velocity30000=velocity; height30000=height; acceleration30000=acceleration;
 set_param('SprungModule/h0', 'value', '32000'); sim('SprungModule');
-velocity32000=velocity; height32000=height;
+velocity32000=velocity; height32000=height; acceleration32000=acceleration;
 set_param('SprungModule/h0', 'value', '34000'); sim('SprungModule');
-velocity34000=velocity; height34000=height;
+velocity34000=velocity; height34000=height; acceleration34000=acceleration;
 set_param('SprungModule/h0', 'value', '36000'); sim('SprungModule');
-velocity36000=velocity; height36000=height;
+velocity36000=velocity; height36000=height; acceleration36000=acceleration;
 set_param('SprungModule/h0', 'value', '38000'); sim('SprungModule');
-velocity38000=velocity; height38000=height;
+velocity38000=velocity; height38000=height; acceleration38000=acceleration;
 set_param('SprungModule/h0', 'value', '40000'); sim('SprungModule');
-velocity40000=velocity; height40000=height;
+velocity40000=velocity; height40000=height; acceleration40000=acceleration;
 
+figure(1);
 hold off;
 plot(height40000,velocity40000,'DisplayName','velocity (40km)','XDataSource','height40000','YDataSource','velocity40000');hold all;
 plot(height38000,velocity38000,'DisplayName','velocity (38km)','XDataSource','height38000','YDataSource','velocity38000');hold all;
@@ -31,3 +32,16 @@ plot(height26000,velocity26000,'DisplayName','velocity (26km)','XDataSource','he
 plot(height24000,velocity24000,'DisplayName','velocity (24km)','XDataSource','height24000','YDataSource','velocity24000');hold all;
 plot(height,speedOfSound,'DisplayName','speedOfSound','XDataSource','height','YDataSource','speedOfSound');hold all;
 xlabel('height [m]'); ylabel('speed [m/s]');
+
+figure(2);
+hold off;
+plot(height40000,acceleration40000,'DisplayName','acceleration (40km)','XDataSource','height40000','YDataSource','acceleration40000');hold all;
+plot(height38000,acceleration38000,'DisplayName','acceleration (38km)','XDataSource','height38000','YDataSource','acceleration38000');hold all;
+plot(height36000,acceleration36000,'DisplayName','acceleration (36km)','XDataSource','height36000','YDataSource','acceleration36000');hold all;
+plot(height34000,acceleration34000,'DisplayName','acceleration (34km)','XDataSource','height34000','YDataSource','acceleration34000');hold all;
+plot(height32000,acceleration32000,'DisplayName','acceleration (32km)','XDataSource','height32000','YDataSource','acceleration32000');hold all;
+plot(height30000,acceleration30000,'DisplayName','acceleration (30km)','XDataSource','height30000','YDataSource','acceleration30000');hold all;
+plot(height28000,acceleration28000,'DisplayName','acceleration (28km)','XDataSource','height28000','YDataSource','acceleration28000');hold all;
+plot(height26000,acceleration26000,'DisplayName','acceleration (26km)','XDataSource','height26000','YDataSource','acceleration26000');hold all;
+plot(height24000,acceleration24000,'DisplayName','acceleration (24km)','XDataSource','height24000','YDataSource','acceleration24000');hold all;
+xlabel('height [m]'); ylabel('acceleration [m/s^2]');

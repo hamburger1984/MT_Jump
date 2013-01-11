@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.123"
+    ComputedModelVersion    "1.124"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 11 18:32:05 2013"
+  LastModifiedDate	  "Fri Jan 11 18:44:54 2013"
   RTWModifiedTimeStamp	  279826559
-  ModelVersionFormat	  "1.%<AutoIncrement:123>"
+  ModelVersionFormat	  "1.%<AutoIncrement:124>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -2351,8 +2351,8 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function cwa = triggerParachute(h, cwaJumper, cwaParachute)\n%#codegen\n\ntriggerHeight=1500;\n\n"
-      "\nif h>triggerHeight\n    cwa=cwaJumper;\nelse\n    cwa=cwaParachute;\nend"
+      script		      "function cwa = triggerParachute(h, cwaJumper, cwaParachute)\n%#codegen\n\ntriggerHeight=-99;\n\n\n"
+      "if h>triggerHeight\n    cwa=cwaJumper;\nelse\n    cwa=cwaParachute;\nend"
       editorLayout	      "100 M4x1[205 227 1080 733]"
     }
   }
