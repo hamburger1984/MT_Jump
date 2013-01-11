@@ -1,7 +1,7 @@
 %---------------------------------------------------------------------------------------------------
 % Modellierung
 %---------------------------------------------------------------------------------------------------
-\section{Modellierung}
+\section{Modellierung}\label{sec:modellierung}
 
 Das Experiment besteht grob aus drei Phasen:
 \begin{itemize}
@@ -13,12 +13,12 @@ Der Aufstieg wird im Rahmen dieser Arbeit nicht weiter betrachtet.
 Interessanter ist der Fall - vor allem der ungebremste Abschnitt von Absprung bis zum Öffnen des Fallschirms.
 Um dies zu simulieren, müssen relevante Kräfte und Größen berücksichtigt werden. %identifiziert und modelliert werden.
 
-Seitenwinde und mögliche Rotation werden ignoriert.
+Seitenwinde und mögliche Rotation werden nicht modelliert.
 Als Masse für Springer und Ausrüstung werden $140kg$ angeommen.
 Auf den Springer und seine Ausrüstung wirken lediglich zwei Kräfte:
 \begin{description}
-  \item[$F_G$] Zur Erde hin wirkt die Gravitation.
-  \item[$F_L$] Bremsend wirkt der Luftwiderstand, der sich bei Öffnen des Fallschirms massiv erhöht.
+  \item[$F_g$] Zur Erde hin wirkt die Gravitation.
+  \item[$F_w$] Bremsend wirkt der Luftwiderstand.%, der sich bei Öffnen des Fallschirms massiv erhöht.
 \end{description}
 
 Die ausschlaggebenden Größen werden im Folgenden beschrieben.
@@ -27,9 +27,9 @@ Die ausschlaggebenden Größen werden im Folgenden beschrieben.
 Die Gravitation wirkt zwischen dem Springer und der Erde.
 Allgemein wird hier das newtonsches Gravitationsgesetz angewendet.
 \begin{equation}
-F_G=G \frac{m_1 m_2}{r^2}
+F_g=G \frac{m_1 m_2}{r^2}
 \end{equation}
-Dabei ist $G$ die Gravitationskonstante $66,7384\times 10^{-12} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
+Dabei ist $G$ die Gravitationskonstante $66.7384\times 10^{-12} \frac{m^3}{kg\ s^2}$, $m_1$ und $m_2$ die beteiligten Massen und $r$ deren Abstand.
 Bis auf $r$ (der Springer bewegt sich ja auf die Erde zu) sind hier alle Größen konstant.
 $r$ ist dabei gleich dem Radius der Erde $r_E$ plus der Höhe des Springers $h$ \vgl Abb.~\ref{fig:gravitation}.
 \begin{figure}[h]
@@ -39,61 +39,54 @@ $r$ ist dabei gleich dem Radius der Erde $r_E$ plus der Höhe des Springers $h$ 
   \label{fig:gravitation}
 \end{figure}
 
-Als Erdradius wird der Äquatorradius $r_E=6.378.137m$ angenommen, als Masse des Springers $m_S=140kg$, als Masse der Erde $m_E=5,9736\times 10^{24}kg$.
+Als Erdradius wird der Äquatorradius $r_E=6 378 137m$ angenommen, als Masse des Springers $m_S=140kg$, als Masse der Erde $m_E=5.9736\times 10^{24}kg$.
 Die Kraft, die auf den Springer auf Erdniveau herrscht beträgt
 \begin{eqnarray}
-F_{g0} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{6.378.137^2} \\
- &=& 1.372 N \nonumber
+F_{g_0} &=& 66.7384\cdot 10^{-12} \frac{140\cdot 5.9736\cdot 10^{24}}{6 378 137^2} \\
+ &=& 1372 N \nonumber
 \end{eqnarray}
 Die Challenger zerbrach in $15km$ Höhe, der Sprung Baumgartners erfolgte aus knapp $40km$.
 Um den Effekt der Höhenänderung deutlich zu zeigen wird als zweiter Wert die Gravitationskraft in $40km$ Höhe berechnet.
 \begin{eqnarray}
-F_{g1} &=& 66,7384\cdot 10^{-12} \frac{140\cdot 5,9736\cdot 10^{24}}{\left(6.378.137 + 40.000\right)^2} \\
- &=& 1.354,9 N \nonumber
+F_{g_1} &=& 66.7384\cdot 10^{-12} \frac{140\cdot 5.9736\cdot 10^{24}}{\left(6 378 137 + 40 000\right)^2} \\
+ &=& 1354.9 N \nonumber
 \end{eqnarray}
-Die Gravitationkraft nimmt in Absprunghöhe gegenüber der auf Erdniveau herrschenden um knapp $2\%$ ab.
+Die Gravitationskraft nimmt in Absprunghöhe gegenüber der auf Erdniveau herrschenden um knapp $2\%$ ab.
 Die Veränderung ist nicht groß, wird aber in der Simulation berücksichtigt.
 
 \subsection{Luftwiderstand}
-Der Fall des Springers wird durch den von der Atmosphäre verursachten Strömungswiderstand gebremst.
+Der Fall des Springers wird durch den von der Atmosphäre verursachten Luftwiderstand gebremst.
+Zur Berechnung dieser Kraft wird die Formel für den Strömungswiderstand verwendet.
 \begin{equation}
-F_L=\frac{1}{2}pv^2c_wA
+F_w=\frac{1}{2}pv^2c_wA
 \end{equation}
-In die Berechnung der Kraft gehen die Geschwindigkeit $v$, die Widerstandsfläche (das Produkt aus $c_w$ und $A$) und die Dichte $p$ ein.
-Die Dichte der Atmosphäre ist höhenabhängig.
-Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
+In die Berechnung der Kraft gehen die aktuelle Geschwindigkeit $v$, der Strömungswiderstandskoeffizient $c_w$, die angeströmte Fläche $A$ und die Dichte des umgebenden Mediums $p$ ein.
+Die Geschwindigkeit ist das Integral des zurückgelegten Weges, ergibt sich also zu jedem Zeitpunkt aus der Simulation.
+Die Wahl von $p$, $c_w$ und $A$ werden im Folgenden beschrieben.
+%Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
 %Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
-
-
 
 \paragraph{Atmosphärenmodell}
 Mit steigender Höhe nimmt der Luftdruck ab, da die darüberliegende Gassäule kürzer und somit leichter wird.
 Auch die Temperatur ist höhenabhängig.
 Zunächst ist die Temperatur der Erdoberfläche der ausschlaggebende Faktor.
 Mit zunehmender Höhe nimmt dieser Einfluss ab und die Temperatur sinkt.
-Darüber nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Einstrahlung von darüberliegenden Atmosphärenschichten blockiert wird.
+Ab einer bestimmten Höhe nimmt die Temperatur wieder zu, da ein immer geringerer Anteil der Einstrahlung von darüberliegenden Atmosphärenschichten blockiert wird.
+Die Höhe, ab der die Temperatur wieder steigt ist von vielen Faktoren wie zum Beispiel der Tages- und Jahreszeit abhängig.
+Nach einiger Beschäftigung mit Meteorologie, der Schichtung der Atmosphäre, Höhenformeln, virtueller Temperatur usw.~\cite{met:einfuehrung, met:umwelt}, wurde für die Simulation auf die eigene Umsetzung eines Atmosphärenmodells verzichtet.
 
-Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet.
-Es liefert für die Parameter Datum, Uhrzeit, geographische Position und einem Höhenbereich von $0$ bis $100km$ Werte für Dichte und Temperatur.
-Für die Simulation wird hier lediglich die Höhe variiert und die anderen Parameter auf das Ort und Zeit des Baumgartner-Experiments konstant vorbelegt.
-Das Modell stellt so eine Funktion $p=f(h)$ bereit.
+Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet, das in Matlab und Simulink als Funktion und Block zur Verfügung steht~\cite{matlab:mrlmsise-00}.
+Es liefert abhängig von den Parametern Datum, Uhrzeit und geographische Position in einem Höhenbereich von $0$ bis $100km$ Werte für Dichte und Temperatur.
+Für die Simulation wird lediglich die Höhe variiert und die anderen Parameter auf Ort und Zeit des Baumgartner-Experiments konstant vorbelegt.
+Dichte und Temperatur stehen also jeweils als Funktion der Höhe zur Verfügung.
 
-\paragraph{Widerstandsfläche}
-Die Widerstandsfläche vom Springer im freien Fall beträgt $1,07$~\cite[59]{redbulletin:stratosspecialde}.
-Mit geöffnetem Fallschirm beträgt die Widerstandsfläche $c_wA=1,4\cdot25=35$.
+\paragraph{Strömungswiderstandskoeffizient und -fläche}
+Der $c_w$-Wert eines Menschen liegt laut \cite[88]{humankinetics} lageabhängig in einer Spanne von $0.35$ bis $1.36$.
+Die höheren Werte gelten dabei für Lagen quer zum Luftstrom, das niedere Ende des Spektrums für Lagen längs zum Luftstrom.
+Auch die angeströmte Fläche $A$ ist von der Richtung des Luftstroms abhängig.
+Da Felix Baumgartner kurz nach dem Absprung in Rotation geriet und somit nicht kontinuierlich kopfüber längs zum Luftstrom fiel, werden für die Simulation die Werte $c_w=1.3$ und $A=0.8$ gewählt, was in etwa dem in \cite{redbulletin:stratosspecialde} auf Seite 59 genannten Wert $c_w\cdot A=1.07$ entspricht.
 
-%\paragraph{Schallgeschwindigkeit}
 \subsection{Gesamtmodell}
-
-Die resultierende Kraft (in Richtung Höhe) auf den Springer ist die Luftreibung minus der Gravitationskraft.
-\begin{eqnarray*}
-  F_S &=& -F_G+F_L \\
-  a_Sm_S &=& -F_G+F_L
-\end{eqnarray*}
-Die für das Modell benötigte Beschleunigung erhält man, indem durch die Masse des Springers dividiert wird.
-\begin{equation}
-  a_S = \frac{-F_G+F_L}{m_S} = \frac{-G\frac{m_Sm_E}{(r_E+h)^2}+\frac{1}{2}pv^2c_wA}{m_S}
-\end{equation}
 
 \begin{figure}[h]
   \centering
@@ -101,4 +94,15 @@ Die für das Modell benötigte Beschleunigung erhält man, indem durch die Masse
   \caption{Wirkende Kräfte}
   \label{fig:forces}
 \end{figure}
+Die resultierende Kraft $F_S$ (in Richtung Höhe) auf den Springer ist die Luftreibung minus der Gravitationskraft.
+$F_S$ lässt sich zerlegen in das Produkt von Beschleunigung des Springers $a_S$ und Masse des Springers $m_S$.
+Diese Formel nach $a_S$ umgestellt ist die für die Simulation benötigte Gesamtgleichung.
+\begin{eqnarray}
+  F_S &=& F_w-F_g \\
+  a_Sm_S &=& F_w-F_g \nonumber \\
+  a_S &=& \frac{F_w-F_g}{m_S}\\
+   &=& \frac{\frac{1}{2}pv^2c_wA-G\frac{m_Sm_E}{(r_E+h)^2}}{m_S} \nonumber
+\end{eqnarray}
+
+
 
