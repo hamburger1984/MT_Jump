@@ -61,7 +61,7 @@ Zur Berechnung dieser Kraft wird die Formel für den Strömungswiderstand verwen
 F_w=\frac{1}{2}pv^2c_wA
 \end{equation}
 In die Berechnung der Kraft gehen die aktuelle Geschwindigkeit $v$, der Strömungswiderstandskoeffizient $c_w$, die angeströmte Fläche $A$ und die Dichte des umgebenden Mediums $p$ ein.
-Die Geschwindigkeit ist das Integral des zurückgelegten Weges, ergibt sich also zu jedem Zeitpunkt aus der Simulation.
+Die Geschwindigkeit ist das Integral der Beschleunigung, ergibt sich also zu jedem Zeitpunkt aus der Simulation.
 Die Wahl von $p$, $c_w$ und $A$ werden im Folgenden beschrieben.
 %Die Widerstandsfläche ändert sich bei Öffnung des Fallschirms.
 %Weiterhin steigt die Widerstandsfläche in der Nähe der dichte- und temperaturabhängigen Schallgeschwindigkeit an.
@@ -100,7 +100,7 @@ Diese Formel nach $a_S$ umgestellt ist die für die Simulation benötigte Gesamt
 \begin{eqnarray}
   F_S &=& F_w-F_g \\
   a_Sm_S &=& F_w-F_g \nonumber \\
-  a_S &=& \frac{F_w-F_g}{m_S}\\
+  a_S &=& \frac{F_w-F_g}{m_S} \label{f:a_s}\\
    &=& \frac{\frac{1}{2}pv^2c_wA-G\frac{m_Sm_E}{(r_E+h)^2}}{m_S} \nonumber
 \end{eqnarray}
 
