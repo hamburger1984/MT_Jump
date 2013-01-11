@@ -77,14 +77,14 @@ Nach einiger Beschäftigung mit Meteorologie, der Schichtung der Atmosphäre, H�
 
 Für die Simulation von Dichte und Temperatur wird das empirische NRLMSISE-00-Modell~\cite{nrlmsise00:goddardspaceflightcenter} verwendet, das in Matlab und Simulink als Funktion und Block zur Verfügung steht~\cite{matlab:mrlmsise-00}.
 Es liefert abhängig von den Parametern Datum, Uhrzeit und geographische Position in einem Höhenbereich von $0$ bis $100km$ Werte für Dichte und Temperatur.
-Für die Simulation wird lediglich die Höhe variiert und die anderen Parameter auf Ort und Zeit des Baumgartner-Experiments konstant vorbelegt.
+Für die Simulation wird lediglich die Höhe variiert und die anderen Parameter mit Ort und Zeit des Baumgartner-Experiments konstant vorbelegt.
 Dichte und Temperatur stehen also jeweils als Funktion der Höhe zur Verfügung.
 
 \paragraph{Strömungswiderstandskoeffizient und -fläche}
-Der $c_w$-Wert eines Menschen liegt laut \cite[88]{humankinetics} lageabhängig in einer Spanne von $0.35$ bis $1.36$.
+Der $c_w$-Wert eines Menschen liegt laut Zatsiorsky~\cite[88]{humankinetics} lageabhängig in einer Spanne von $0.35$ bis $1.36$.
 Die höheren Werte gelten dabei für Lagen quer zum Luftstrom, das niedere Ende des Spektrums für Lagen längs zum Luftstrom.
 Auch die angeströmte Fläche $A$ ist von der Richtung des Luftstroms abhängig.
-Da Felix Baumgartner kurz nach dem Absprung in Rotation geriet und somit nicht kontinuierlich kopfüber längs zum Luftstrom fiel, werden für die Simulation die Werte $c_w=1.3$ und $A=0.8$ gewählt, was in etwa dem in \cite{redbulletin:stratosspecialde} auf Seite 59 genannten Wert $c_w\cdot A=1.07$ entspricht.
+Da Felix Baumgartner kurz nach dem Absprung in Rotation geriet und somit nicht kontinuierlich kopfüber längs zum Luftstrom fiel, werden für die Simulation die Werte $c_w=1.3$ und $A=0.8$ geschätzt, was in etwa dem in \cite{redbulletin:stratosspecialde} auf Seite 59 genannten Wert $c_w\cdot A=1.07$ entspricht.
 
 \subsection{Gesamtmodell}
 
@@ -103,6 +103,6 @@ Diese Formel nach $a_S$ umgestellt ist die für die Simulation benötigte Gesamt
   a_S &=& \frac{F_w-F_g}{m_S} \label{f:a_s}\\
    &=& \frac{\frac{1}{2}pv^2c_wA-G\frac{m_Sm_E}{(r_E+h)^2}}{m_S} \nonumber
 \end{eqnarray}
-
+Nach dem Absprung erfährt der Springer also voraussichtlich zunächst eine negative Beschleunigung ($F_g\gg F_w$) bis die Geschwindigkeit weit genug gestiegen ist und er in dichtere Atmosphärenschichten gefallen ist und dort zunehmend abgebremst wird ($F_g<F_w$).
 
 
