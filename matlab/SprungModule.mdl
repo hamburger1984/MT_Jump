@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.104"
+    ComputedModelVersion    "1.123"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -26,9 +26,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "andreas"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 11 14:37:11 2013"
-  RTWModifiedTimeStamp	  279803108
-  ModelVersionFormat	  "1.%<AutoIncrement:104>"
+  LastModifiedDate	  "Fri Jan 11 18:32:05 2013"
+  RTWModifiedTimeStamp	  279826559
+  ModelVersionFormat	  "1.%<AutoIncrement:123>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -65,6 +65,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "SprungModule"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -784,7 +785,7 @@ Model {
   }
   System {
     Name		    "SprungModule"
-    Location		    [1593, 120, 3042, 970]
+    Location		    [1522, 321, 2624, 1010]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -798,13 +799,20 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "278"
+    SIDHighWatermark	    "282"
     Block {
       BlockType		      Constant
       Name		      "A Jumper"
       SID		      "235"
       Position		      [175, 225, 205, 255]
       Value		      "0.8"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "A Parachute"
+      SID		      "280"
+      Position		      [135, 350, 165, 380]
+      Value		      "25"
     }
     Block {
       BlockType		      Reference
@@ -1218,6 +1226,150 @@ Model {
       }
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "MATLAB Function2"
+      SID		      "282"
+      Ports		      [3, 1]
+      Position		      [355, 140, 510, 210]
+      LibraryVersion	      "1.32"
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "Stateflow"
+      MaskDescription	      "Embedded MATLAB block"
+      MaskSelfModifiable      on
+      MaskDisplay	      "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('pr"
+      "ivate/eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'triggerParachute']);"
+      MaskIconFrame	      on
+      MaskIconOpaque	      off
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "normalized"
+      System {
+	Name			"MATLAB Function2"
+	Location		[257, 457, 812, 717]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"19"
+	Block {
+	  BlockType		  Inport
+	  Name			  "h"
+	  SID			  "282::1"
+	  Position		  [20, 101, 40, 119]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "cwaJumper"
+	  SID			  "282::18"
+	  Position		  [20, 136, 40, 154]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "cwaParachute"
+	  SID			  "282::19"
+	  Position		  [20, 171, 40, 189]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "282::15"
+	  Ports			  [1, 1]
+	  Position		  [270, 180, 320, 220]
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "282::14"
+	  Tag			  "Stateflow S-Function SprungModule 3"
+	  Ports			  [3, 2]
+	  Position		  [180, 100, 230, 180]
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[3 2]"
+	  EnableBusSupport	  on
+	  Port {
+	    PortNumber		    2
+	    Name		    "cwa"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "282::17"
+	  Position		  [460, 191, 480, 209]
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "cwa"
+	  SID			  "282::5"
+	  Position		  [460, 101, 480, 119]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "h"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "cwaJumper"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "cwaParachute"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "cwa"
+	  Labels		  [0, 0; 0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "cwa"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
       BlockType		      Mux
       Name		      "Mux"
       SID		      "246"
@@ -1243,6 +1395,16 @@ Model {
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux2"
+      SID		      "281"
+      Ports		      [2, 1]
+      Position		      [200, 301, 205, 339]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
     }
     Block {
       BlockType		      Reference
@@ -1396,6 +1558,13 @@ Model {
       Value		      "1.3"
     }
     Block {
+      BlockType		      Constant
+      Name		      "cw Parachute"
+      SID		      "279"
+      Position		      [135, 295, 165, 325]
+      Value		      "1.4"
+    }
+    Block {
       BlockType		      Integrator
       Name		      "h"
       SID		      "261"
@@ -1414,7 +1583,7 @@ Model {
       Name		      "h0"
       SID		      "262"
       Position		      [175, 35, 205, 65]
-      Value		      "39045"
+      Value		      "40000"
       Port {
 	PortNumber		1
 	Name			"h0 [m]"
@@ -1521,9 +1690,17 @@ Model {
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [-270, 0; 0, 100]
-	    DstBlock		    "Mux"
-	    DstPort		    3
+	    Points		    [-270, 0]
+	    Branch {
+	      Points		      [0, 100]
+	      DstBlock		      "Mux"
+	      DstPort		      3
+	    }
+	    Branch {
+	      Points		      [0, -135]
+	      DstBlock		      "MATLAB Function2"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Branch {
@@ -1712,15 +1889,6 @@ Model {
       DstPort		      1
     }
     Line {
-      Name		      "cw, A"
-      Labels		      [0, 0; 0, 0]
-      SrcBlock		      "Mux1"
-      SrcPort		      1
-      Points		      [110, 0; 0, 110]
-      DstBlock		      "Demux2"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Gain"
       SrcPort		      1
       DstBlock		      "To Workspace1"
@@ -1750,6 +1918,42 @@ Model {
       DstBlock		      "To Workspace3"
       DstPort		      1
     }
+    Line {
+      SrcBlock		      "cw Parachute"
+      SrcPort		      1
+      DstBlock		      "Mux2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "A Parachute"
+      SrcPort		      1
+      Points		      [5, 0; 0, -35]
+      DstBlock		      "Mux2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Mux2"
+      SrcPort		      1
+      Points		      [130, 0]
+      DstBlock		      "MATLAB Function2"
+      DstPort		      3
+    }
+    Line {
+      Name		      "cw, A"
+      Labels		      [0, 0; 0, 0]
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      Points		      [70, 0; 0, -55]
+      DstBlock		      "MATLAB Function2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "MATLAB Function2"
+      SrcPort		      1
+      Points		      [5, 0]
+      DstBlock		      "Demux2"
+      DstPort		      1
+    }
   }
 }
 # Finite State Machines
@@ -1765,7 +1969,9 @@ Stateflow {
     name		    "SprungModule"
     created		    "10-Jan-2013 14:25:12"
     isLibrary		    0
-    firstTarget		    21
+    firstTarget		    30
+    debug {
+    }
     sfVersion		    75014001
   }
   chart {
@@ -2028,7 +2234,7 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function c = schallgeschwindigkeit(t)\n\nc = 331.3*sqrt(1 + (t-273.15)/273.15);"
+      script		      "function c = schallgeschwindigkeit(t)\nc = 331.3*sqrt(1 + (t-273.15)/273.15);"
       editorLayout	      "100 M4x1[163 71 1080 733]"
     }
   }
@@ -2107,8 +2313,170 @@ Stateflow {
     machine		    1
     chart		    14
   }
-  target {
+  chart {
     id			    21
+    name		    "MATLAB Function2"
+    windowPosition	    [375.75 203.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 3120 1050 1.25]
+    treeNode		    [0 22 0 0]
+    firstTransition	    24
+    firstJunction	    23
+    viewObj		    21
+    machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
+    ssIdHighWaterMark	    7
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    25
+    chartFileNumber	    3
+    disableImplicitCasting  1
+    eml {
+      name		      "triggerParachute"
+    }
+  }
+  state {
+    id			    22
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    21
+    treeNode		    [21 0 0 0]
+    superState		    SUBCHART
+    subviewer		    21
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function cwa = triggerParachute(h, cwaJumper, cwaParachute)\n%#codegen\n\ntriggerHeight=1500;\n\n"
+      "\nif h>triggerHeight\n    cwa=cwaJumper;\nelse\n    cwa=cwaParachute;\nend"
+      editorLayout	      "100 M4x1[205 227 1080 733]"
+    }
+  }
+  junction {
+    id			    23
+    position		    [23.5747 49.5747 7]
+    chart		    21
+    linkNode		    [21 0 0]
+    subviewer		    21
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    24
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      23
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    21
+    linkNode		    [21 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    21
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    25
+    ssIdNumber		    4
+    name		    "h"
+    linkNode		    [21 0 26]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    26
+    ssIdNumber		    5
+    name		    "cwa"
+    linkNode		    [21 25 27]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    27
+    ssIdNumber		    6
+    name		    "cwaJumper"
+    linkNode		    [21 26 28]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    28
+    ssIdNumber		    7
+    name		    "cwaParachute"
+    linkNode		    [21 27 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    29
+    name		    "MATLAB Function2"
+    machine		    1
+    chart		    21
+  }
+  target {
+    id			    30
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1

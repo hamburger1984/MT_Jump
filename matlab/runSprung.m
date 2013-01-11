@@ -1,7 +1,33 @@
-load_system('SprungModule')
-for h0=20000:5000:4
-    set_param('SprungModule/h0', 'value', int2str(h0));
-    output = sim('SprungModule');
-    save(['runSprungOutput' int2str(h0)], '-ascii', '-append');
-end
+%load_system('SprungModule');
 
+set_param('SprungModule/h0', 'value', '24000'); sim('SprungModule');
+velocity24000=velocity; height24000=height;
+set_param('SprungModule/h0', 'value', '26000'); sim('SprungModule');
+velocity26000=velocity; height26000=height;
+set_param('SprungModule/h0', 'value', '28000'); sim('SprungModule');
+velocity28000=velocity; height28000=height;
+set_param('SprungModule/h0', 'value', '30000'); sim('SprungModule');
+velocity30000=velocity; height30000=height;
+set_param('SprungModule/h0', 'value', '32000'); sim('SprungModule');
+velocity32000=velocity; height32000=height;
+set_param('SprungModule/h0', 'value', '34000'); sim('SprungModule');
+velocity34000=velocity; height34000=height;
+set_param('SprungModule/h0', 'value', '36000'); sim('SprungModule');
+velocity36000=velocity; height36000=height;
+set_param('SprungModule/h0', 'value', '38000'); sim('SprungModule');
+velocity38000=velocity; height38000=height;
+set_param('SprungModule/h0', 'value', '40000'); sim('SprungModule');
+velocity40000=velocity; height40000=height;
+
+hold off;
+plot(height40000,velocity40000,'DisplayName','velocity (40km)','XDataSource','height40000','YDataSource','velocity40000');hold all;
+plot(height38000,velocity38000,'DisplayName','velocity (38km)','XDataSource','height38000','YDataSource','velocity38000');hold all;
+plot(height36000,velocity36000,'DisplayName','velocity (36km)','XDataSource','height36000','YDataSource','velocity36000');hold all;
+plot(height34000,velocity34000,'DisplayName','velocity (34km)','XDataSource','height34000','YDataSource','velocity34000');hold all;
+plot(height32000,velocity32000,'DisplayName','velocity (32km)','XDataSource','height32000','YDataSource','velocity32000');hold all;
+plot(height30000,velocity30000,'DisplayName','velocity (30km)','XDataSource','height30000','YDataSource','velocity30000');hold all;
+plot(height28000,velocity28000,'DisplayName','velocity (28km)','XDataSource','height28000','YDataSource','velocity28000');hold all;
+plot(height26000,velocity26000,'DisplayName','velocity (26km)','XDataSource','height26000','YDataSource','velocity26000');hold all;
+plot(height24000,velocity24000,'DisplayName','velocity (24km)','XDataSource','height24000','YDataSource','velocity24000');hold all;
+plot(height,speedOfSound,'DisplayName','speedOfSound','XDataSource','height','YDataSource','speedOfSound');hold all;
+xlabel('height [m]'); ylabel('speed [m/s]');
